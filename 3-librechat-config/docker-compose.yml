@@ -1,0 +1,47 @@
+services:
+  librechat:
+    image: ghcr.io/danny-avila/librechat-dev:latest
+    container_name: librechat
+    ports:
+      - 3080:3080
+    depends_on:
+      - mongodb
+      - meilisearch
+    env_file:
+      - .env
+    volumes:
+      - ./librechat.yaml:/app/librechat.yaml
+
+  mongodb:
+    image: mongo:latest
+    container_name: librechat-mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - librechat_mongo_data:/data/db
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.7.3
+    container_name: librechat-meilisearch
+    ports:
+      - 7700:7700
+    environment:
+      - MEILI_MASTER_KEY=your_master_key_here
+      - MEILI_NO_ANALYTICS=true
+    volumes:
+      - librechat_meili_data:/meili_data
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: librechat-ollama
+    ports:
+      - 11434:11434
+    volumes:
+      - ollama_data:/root/.ollama
+    # Entrypoint override to pull llama3.1:8b on startup
+    entrypoint: [ "/bin/sh", "-c", "ollama serve & sleep 5 && ollama pull llama3.1:8b && wait" ]
+
+volumes:
+  librechat_mongo_data:
+  librechat_meili_data:
+  ollama_data:

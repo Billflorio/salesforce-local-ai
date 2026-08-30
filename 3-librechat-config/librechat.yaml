@@ -1,0 +1,14 @@
+version: 1.0.5
+
+endpoints:
+  custom:
+    - name: "Local Ollama"
+      apiKey: "ollama"
+      baseURL: "http://ollama:11434/v1"
+      models:
+        default: [ "llama3.1:8b" ]
+        fetch: true
+      titleConvo: true
+      titleModel: "llama3.1:8b"
+      summarize: false
+      summarizeModel: "llama3.1:8b"
