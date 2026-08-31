@@ -49,7 +49,7 @@ If you want to take this architecture to the next level or scale it for your org
 ### Salesforce & Developer Tools
 - **[Salesforce Extensions for VS Code](https://developer.salesforce.com/tools/vscode):** The official guide on how to integrate the Salesforce CLI with Visual Studio Code. This is the industry standard for writing Apex, LWC, and deploying metadata.
 - **[Salesforce Hosted MCP Servers (Beta)](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/overview):** The official developer documentation for the Agentforce MCP endpoints used in this project.
-- **[Salesforce External Client Apps](https://developer.salesforce.com/blogs/2023/10/secure-your-org-with-external-client-apps):** A developer-focused deep dive into the modern OAuth standard that replaces traditional Connected Apps.
+- **[Salesforce External Client Apps](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&type=5):** Deep dive into the modern OAuth standard that replaces traditional Connected Apps.
 
 ### Enterprise AI & LibreChat
 - **[LibreChat Enterprise Deployment](https://www.librechat.ai/docs/configuration/librechat_yaml):** Guide on using librechat.yaml to enforce strict organizational rules, manage endpoints, configure custom SSO (Single Sign-On), and disable public registration for enterprise scenarios.
