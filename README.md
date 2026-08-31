@@ -52,6 +52,6 @@ If you want to take this architecture to the next level or scale it for your org
 - **[Salesforce External Client Apps](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&type=5):** Deep dive into the modern OAuth standard that replaces traditional Connected Apps.
 
 ### Enterprise AI & LibreChat
-- **[LibreChat Enterprise Deployment](https://www.librechat.ai/docs/configuration/librechat_yaml):** Guide on using librechat.yaml to enforce strict organizational rules, manage endpoints, configure custom SSO (Single Sign-On), and disable public registration for enterprise scenarios.
+- **[LibreChat Enterprise Deployment](https://www.librechat.ai/docs/remote):** Guide on deploying LibreChat to remote servers, enforcing strict organizational rules, managing endpoints, configuring custom SSO (Single Sign-On), and disabling public registration for enterprise scenarios.
 - **[Model Context Protocol (MCP)](https://modelcontextprotocol.io/):** The official documentation for the open-source protocol that makes it possible for AI models to securely read your Salesforce data.
 - **[Ollama Enterprise Guide](https://github.com/ollama/ollama):** Documentation on how to run Ollama on dedicated GPU servers, rather than local laptops, to serve multiple enterprise users simultaneously.
