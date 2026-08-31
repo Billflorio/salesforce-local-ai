@@ -42,3 +42,16 @@ We have provided a one-click setup script to boot your local AI containers (loca
 
 ### [5. Security & Testing Plan](./TESTING.md)
 A comprehensive QA plan documenting how to validate that your integration properly respects Field Level Security (FLS) and Org-Wide Defaults (OWD), and ensures read-only access.
+## ?? Additional Resources & Further Reading
+
+If you want to take this architecture to the next level or scale it for your organization, check out these official resources:
+
+### Salesforce & Developer Tools
+- **[Salesforce Extensions for VS Code](https://developer.salesforce.com/tools/vscode):** The official guide on how to integrate the Salesforce CLI with Visual Studio Code. This is the industry standard for writing Apex, LWC, and deploying metadata.
+- **[Salesforce Hosted MCP Servers (Beta)](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/introduction.html):** The official developer documentation for the Agentforce MCP endpoints used in this project.
+- **[Salesforce External Client Apps](https://help.salesforce.com/s/articleView?id=sf.eca_intro.htm&type=5):** Deep dive into the modern OAuth standard that replaces traditional Connected Apps.
+
+### Enterprise AI & LibreChat
+- **[LibreChat Enterprise Deployment](https://www.librechat.ai/docs/configuration/librechat_yaml):** Guide on using librechat.yaml to enforce strict organizational rules, manage endpoints, configure custom SSO (Single Sign-On), and disable public registration for enterprise scenarios.
+- **[Model Context Protocol (MCP)](https://modelcontextprotocol.io/):** The official documentation for the open-source protocol that makes it possible for AI models to securely read your Salesforce data.
+- **[Ollama Enterprise Guide](https://github.com/ollama/ollama):** Documentation on how to run Ollama on dedicated GPU servers, rather than local laptops, to serve multiple enterprise users simultaneously.
