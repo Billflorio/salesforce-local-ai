@@ -14,7 +14,28 @@ if ($agree -ne "I AGREE") {
     exit
 }
 Write-Host ""
-# 1. Check for Docker
+try {
+    $sfCheck = sf --version 2>&1
+    if ($LASTEXITCODE -ne 0 -and $sfCheck -match "is not recognized") {
+        throw "Not installed"
+    }
+    Write-Host "[OK] Salesforce CLI is installed." -ForegroundColor Green
+} catch {
+    Write-Host "ERROR: Salesforce CLI (sf) is not installed." -ForegroundColor Red
+    Write-Host "The Salesforce CLI is required to generate the OAuth tokens for LibreChat."
+    $installSf = Read-Host "Would you like me to install the Salesforce CLI for you now using Winget? (Y/N)"
+    if ($installSf -match "^[Yy]") {
+        Write-Host "Downloading and installing Salesforce CLI... This may take a moment." -ForegroundColor Cyan
+        winget install Salesforce.CLI --silent --accept-package-agreements --accept-source-agreements
+        Write-Host "Installation complete! IMPORTANT: You must restart your terminal for the 'sf' command to be recognized." -ForegroundColor Yellow
+        Write-Host "After restarting your terminal, run this script again." -ForegroundColor Yellow
+    } else {
+        Write-Host "Please install the Salesforce CLI manually: https://developer.salesforce.com/tools/salesforcecli" -ForegroundColor Yellow
+    }
+    exit
+}
+
+# 2. Check for Docker
 try {
     $dockerCheck = docker info 2>&1
     if ($LASTEXITCODE -ne 0) {
