@@ -49,3 +49,10 @@ Just ask Antigravity to do things in plain English! Because it has access to you
 - "Pull down the Flow named 'User_Onboarding' and tell me what it does."
 
 *Behind the scenes, Antigravity uses your local model to generate the code, runs `sf` commands to push it to your org, and reads the success/error logs directly from your terminal!*
+
+## Mac / Linux Users
+Run the bash script instead to install Ollama and dependencies:
+```bash
+chmod +x setup_local_ai.sh
+./setup_local_ai.sh
+```
