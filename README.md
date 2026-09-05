@@ -18,7 +18,14 @@ This entire stack is natively cross-platform! Everything is orchestrated using s
 
 ---
 
-## ?? Repository Guide
+## 💡 Pro Tip for Beginners: Install Antigravity First!
+If you are anxious about following all the command-line instructions, installing Docker, or configuring your environment, **start by installing Antigravity (Step 2) first.** 
+
+Antigravity is an AI agent that lives on your computer with full terminal access. Once installed, it acts as a real-time IT assistant. You can literally ask it to *"help me install Docker,"* *"read these error logs,"* or *"fix my Linux user permissions"* and it will do the heavy lifting for you while you follow the rest of this guide!
+
+---
+
+## 📚 Repository Guide
 
 This repository is broken down into modules to help you understand and deploy the architecture step-by-step. Please review the documentation in each folder:
 
