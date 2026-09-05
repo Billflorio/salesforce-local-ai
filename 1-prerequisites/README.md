@@ -6,7 +6,7 @@ If you are a Salesforce Admin and have never used Docker or LibreChat before, do
 Think of **Docker** like a virtual shipping container for software. Instead of you having to manually install 15 different tools and databases on your laptop to make an AI work, Docker packages all of them up into "containers." 
 When we run Docker, it automatically downloads and starts everything we need inside these isolated containers. It keeps your laptop clean and guarantees that the software works the exact same way on your machine as it does on anyone else's.
 
-### How to Install Docker Desktop:
+### How to Install Docker Desktop (Windows & Mac)
 1. **Download:** Go to [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/) and click "Download for Windows" (or Mac).
 2. **Install:** Run the installer you just downloaded. Leave all the default checkboxes checked (especially WSL 2 if you are on Windows).
 3. **Restart:** Your computer may prompt you to restart after installation.
@@ -14,6 +14,14 @@ When we run Docker, it automatically downloads and starts everything we need ins
 5. **Leave it running:** You will see a little whale icon in your system tray (bottom right corner). As long as that is running, you are good to go!
 
 *(Note: If you run our `start.ps1` script on Windows, it will even offer to automatically download and install Docker for you!)*
+
+### How to Install Docker (Linux)
+**Do NOT install Docker Desktop!** Windows and Mac need Docker Desktop because they require a hidden virtual machine to run containers. Linux natively supports containers. 
+Simply install the native Docker Engine via your terminal:
+```bash
+sudo apt update
+sudo apt install docker.io docker-compose-v2
+```
 
 ## 2. What is LibreChat & Ollama?
 - **Ollama** is the engine running under the hood. It downloads the AI model (like Llama 3.1) and runs it using your computer's hardware.
