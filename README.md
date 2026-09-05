@@ -31,19 +31,23 @@ Instructions for connecting **Antigravity** (your local AI coding agent) to your
 We have provided a one-click setup script to boot your local AI containers (located in the `3-librechat-config` folder).
 
 **For Windows Users:**
-1. Open a PowerShell terminal.
-2. Navigate to this root folder.
-3. Run the script:
+1. **Download this code:** Click the green **Code** button at the top of this GitHub page and select **Download ZIP**. Extract the folder to your computer.
+2. Open a PowerShell terminal.
+3. Navigate into the folder you just extracted.
+4. Run the setup script:
    ```powershell
    .\start.ps1
    ```
 
 **For Mac & Linux Users:**
 Mac and Linux natively support Docker without needing the PowerShell setup script.
-1. Open your Terminal.
-2. Navigate to the `3-librechat-config` folder:
+1. **Download this code:** Open your Terminal and clone this repository:
    ```bash
-   cd 3-librechat-config
+   git clone https://github.com/Billflorio/salesforce-local-ai.git
+   ```
+2. Navigate into the configuration folder:
+   ```bash
+   cd salesforce-local-ai/3-librechat-config
    ```
 3. Copy the example environment file:
    ```bash
