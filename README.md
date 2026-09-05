@@ -57,6 +57,7 @@ Mac and Linux natively support Docker without needing the PowerShell setup scrip
    ```bash
    docker compose up -d
    ```
+   *(Note: If you get an "unknown command" or "unknown flag" error on older Linux versions, try using the older hyphenated command: `docker-compose up -d`)*
 
 ### 4. Access LibreChat & Create Your Account
 The commands in Step 3 will automatically pull the AI models and boot up the LibreChat web interface in the background. 
