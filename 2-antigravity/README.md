@@ -1,6 +1,6 @@
 # Hijacking Antigravity for Salesforce (Local AI Setup)
 
-Antigravity is an AI coding agent that lives locally on your machine and has full access to your terminal. This setup is here so any Salesforce Admin can use Antigravity to write Apex and run their org **for absolutely free** using local AI models. No expensive cloud subscriptions. No paying rent for tools you should own.
+Antigravity is an AI coding agent that lives locally on your machine and has full access to your terminal. This setup is here so any Salesforce Admin can use Antigravity to write Apex and run their org  using multiple cloud models both free and paid. No expensive cloud subscriptions required.
 
 ## The Strategy: Local-First AI
 We use **Ollama** to run a lightweight, open-source AI model locally on your computer. It's designed to run on standard hardware—including that old, rusty laptop you've been putting off replacing. Antigravity uses this local model to write your code. 
