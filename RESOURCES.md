@@ -21,5 +21,4 @@ The "Hub and Spoke" pattern uses a highly capable model (the Hub) as an orchestr
 **This architecture is the exact concept behind the overpriced hype of commercial enterprise AI platforms like Agentforce.** By following the multi-agent patterns in these videos, you can build a faster, more secure, and completely free alternative yourself:
 
 * **[Orchestrator Agent](https://youtu.be/X3XJeTApVMM?is=85tHT-4H1eGInCSK)** — Shows how a "Supervisor" delegates specific tasks to specialized worker agents.
-* **[Jeff Geerling: Claude Code & Agent Teams Controlling Hardware](https://www.youtube.com/watch?v=5h-Jz7_hHBE)** — Demonstrates an AI agent acting as the hub to command local hardware and terminal scripts.
-* **[Jeff Geerling: I built a Private AI (Ollama on Raspberry Pi)](https://www.youtube.com/watch?v=R3LhX1jV06I)** — Explores the benefits of local privacy, running Ollama on cheap hardware so it can act as an offline Spoke.
+* **[Jeff Geerling: PI w Deepseek Hardware](https://youtu.be/o1sN1lB76EA?is=LO3yZfpfH0q2FVom)** — Shit cheap AI.
