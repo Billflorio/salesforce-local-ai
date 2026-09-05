@@ -1,5 +1,6 @@
 # Zero Cost AI Solutions: Salesforce MCP Integration
 
+![Presentation QR Code](qr-code.jpg)
 **?? DISCLAIMER & WARNING ??**
 > This repository and its accompanying scripts are provided strictly for **educational and demonstration purposes**. 
 > - **DO NOT run these scripts against a Production Salesforce environment.** You should only use a Salesforce Developer Edition Org or a Sandbox.
