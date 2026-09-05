@@ -54,7 +54,7 @@ The Salesforce Hosted MCP Servers strictly require a specific OAuth scope ("mcp_
 1. Go back to your local LibreChat instance in your browser ("http://localhost:3080").
 2. Click the **MCP Servers** button (the puzzle piece or setting icon).
 3. Click **"+"** or **"Add MCP Server"**.
-4. Give it a name (e.g. "Salesforce").
+4. Give it a name: **`salesforce-object-reads`** *(Note: You must name it exactly this so the generated Callback URL matches what you put in Salesforce!)*
 5. Set the Type to "streamable-http". Server URL is "https://api.salesforce.com/platform/mcp/v1/sandbox/platform/sobject-reads"
 6. Click the Auth tab and choose OAuth.
    - **Client ID:** Paste the Consumer Key from Step 2.
