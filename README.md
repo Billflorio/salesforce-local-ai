@@ -102,9 +102,12 @@ If you want your local model (like `llama3.1:8b` or `qwen2.5:1.5b`) to reliably 
 8. Click **Save**.
 
 You can now use this Agent to chat directly with your Salesforce data securely!
-## ?? Additional Resources & Further Reading
+## 📚 Additional Resources & Further Reading
 
 If you want to take this architecture to the next level or scale it for your organization, check out these official resources:
+
+### 🎥 [Video Resources & YouTube Tutorials](./RESOURCES.md)
+If you prefer visual learning, check out our **[curated list of recent YouTube tutorials](./RESOURCES.md)** covering Docker basics, LibreChat setup, Ollama, and Salesforce MCP.
 
 ### Salesforce & Developer Tools
 - **[Salesforce Extensions for VS Code](https://developer.salesforce.com/tools/vscode):** The official guide on how to integrate the Salesforce CLI with Visual Studio Code. This is the industry standard for writing Apex, LWC, and deploying metadata.
