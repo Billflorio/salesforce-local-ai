@@ -37,3 +37,15 @@ echo "Installation Complete!"
 echo "You can now run 'ollama serve' in the background,"
 echo "and use Antigravity to orchestrate your local models."
 echo "==============================================="
+
+# 4. Hijack Antigravity Endpoint
+echo ""
+echo "--> Forcing Antigravity to use local Ollama so you don't have to click through settings..."
+mkdir -p ../.agents
+cat << 'INNER_EOF' > ../.agents/config.json
+{
+  "api_endpoint": "http://localhost:11434",
+  "default_model": "qwen2.5-coder:7b"
+}
+INNER_EOF
+echo "Success: Local endpoint configured. No UI clicking required."

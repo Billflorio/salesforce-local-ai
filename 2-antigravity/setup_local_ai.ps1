@@ -72,3 +72,13 @@ if ($LASTEXITCODE -eq 0) {
 } else {
     Write-Host "`nError downloading the model. Ensure Ollama is running and try running 'ollama pull qwen2.5-coder:7b' manually." -ForegroundColor Red
 }
+
+# 5. Hijack Antigravity Endpoint
+Write-Host "`n[5/5] Forcing Antigravity to use local Ollama so you don't have to click through settings..." -ForegroundColor Yellow
+if (!(Test-Path -Path "..\.agents")) { New-Item -ItemType Directory -Path "..\.agents" | Out-Null }
+$configJson = @{
+    api_endpoint = "http://localhost:11434"
+    default_model = "qwen2.5-coder:7b"
+} | ConvertTo-Json
+Set-Content -Path "..\.agents\config.json" -Value $configJson
+Write-Host "Success: Local endpoint configured. No UI clicking required." -ForegroundColor Green
