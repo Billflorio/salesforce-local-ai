@@ -38,8 +38,8 @@ services:
       - 11434:11434
     volumes:
       - ollama_data:/root/.ollama
-    # Entrypoint override to pull qwen2.5:1.5b on startup (optimized for low-RAM CPU-only machines)
-    entrypoint: [ "/bin/sh", "-c", "ollama serve & sleep 5 && ollama pull qwen2.5:1.5b && wait" ]
+    # Pull both models: qwen2.5:1.5b (CPU/low-RAM) and llama3.1:8b (GPU/high-RAM)
+    entrypoint: [ "/bin/sh", "-c", "ollama serve & sleep 5 && ollama pull qwen2.5:1.5b && ollama pull llama3.1:8b && wait" ]
 
 volumes:
   librechat_mongo_data:

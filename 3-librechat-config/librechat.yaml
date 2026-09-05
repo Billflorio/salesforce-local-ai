@@ -17,7 +17,7 @@ endpoints:
       apiKey: "ollama"
       baseURL: "http://ollama:11434/v1"
       models:
-        default: [ "qwen2.5:1.5b" ]
+        default: [ "qwen2.5:1.5b", "llama3.1:8b" ]
         fetch: true
       titleConvo: true
       titleModel: "qwen2.5:1.5b"

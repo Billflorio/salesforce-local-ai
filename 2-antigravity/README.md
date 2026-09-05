@@ -10,11 +10,11 @@ The right model depends on your hardware:
 
 | Machine | Recommended Model | RAM Required | Notes |
 |---|---|---|---|
-| Modern laptop / 16 GB+ RAM | `qwen2.5-coder:7b` | ~5 GB | Best code quality |
-| Older laptop / limited RAM | **`qwen2.5:1.5b`** | ~1 GB | ✅ Recommended for older machines |
+| GPU machine / modern laptop | `llama3.1:8b` | ~5 GB | Best quality, needs GPU or lots of RAM |
+| Older laptop / CPU-only | **`qwen2.5:1.5b`** | ~1 GB | ✅ Fast on any hardware |
 | Any machine (fallback) | Google Gemini (free) | Cloud | No local GPU needed |
 
-> **On older or low-RAM machines**, use `qwen2.5:1.5b`. It runs fast on CPU-only hardware and handles Salesforce tool-calling tasks well despite its small size.
+> Both models are downloaded automatically. On a **GPU machine**, pick `llama3.1:8b` in the model selector. On an **older or CPU-only laptop**, pick `qwen2.5:1.5b` for a much faster response.
 
 ---
 
