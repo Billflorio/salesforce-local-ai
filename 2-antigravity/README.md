@@ -74,3 +74,30 @@ Just ask Antigravity to do things in plain English! Because it has access to you
 - "Pull down the Flow named 'User_Onboarding' and tell me what it does."
 
 *Behind the scenes, Antigravity uses your local model to generate the code, runs `sf` commands to push it to your org, and reads the success/error logs directly from your terminal!*
+
+---
+
+## 5. Beyond Salesforce: General IT & Dev Environment Setup
+While Antigravity is a fantastic Salesforce developer, **it is fundamentally a general-purpose agent with terminal access.** This makes it incredibly powerful for tasks far outside of Apex coding.
+
+You can ask Antigravity to fix issues on your actual computer, set up development environments, or troubleshoot OS-level errors.
+
+*Example Prompts:*
+- *"I'm getting a 'permission denied' error when running docker without sudo. Can you fix my Linux user groups so it just works?"*
+- *"Install the Salesforce Extensions pack in VS Code for me."*
+- *"Search my computer to find where LibreChat saved its configuration files."*
+
+## 6. The "Hub and Spoke" AI Architecture (Advanced)
+Antigravity itself is deeply optimized to run on Google's Gemini models natively. While you can swap the core model to a local one (like `qwen`), there is a very powerful alternative architecture: **The Hub and Spoke**.
+
+Instead of making Ollama the "brain" of Antigravity, you can leave Antigravity running on **Gemini (free tier) as the Orchestrator (Hub)**, and have it securely command your **local Ollama instance (Spoke)** via terminal commands!
+
+**How it works:**
+Because Antigravity can run commands in your terminal, it can run `ollama run ...` or hit your local `http://localhost:11434/api/generate` endpoint on your behalf. 
+
+This allows you to ask Antigravity to:
+1. Orchestrate a massive workflow using Gemini's huge context window.
+2. Delegate specific sensitive data-processing tasks to your offline, local Ollama model securely via the terminal.
+3. Read the output from Ollama and format it for you. 
+
+*Example:* *"Hey Antigravity, run this sensitive CSV file through my local `qwen` model using the terminal, and summarize the output for me."*
