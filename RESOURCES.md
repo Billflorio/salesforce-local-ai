@@ -8,10 +8,8 @@ If you prefer visual learning, here is a curated list of recent, highly-rated Yo
 ### 💬 LibreChat Setup Guides
 * **[LibreChat Official Channel](https://www.youtube.com/@LibreChat)** — The official source for updates and tutorials on Agents, Skills, and integrations.
 
-### ☁️ Salesforce Agentforce & MCP
-* **[Building Custom MCP Servers for Salesforce](https://www.youtube.com/watch?v=gT_P3fQ_8Y4)** — Technical deep-dive into how the Model Context Protocol works with Salesforce REST APIs.
-* **[Introduction to Salesforce Agentforce](https://www.youtube.com/watch?v=9oZ_fN5N0Zc)** — How Agentforce utilizes Data Cloud and autonomous agents.
-* **[Connecting Cursor to Salesforce via MCP](https://www.youtube.com/watch?v=8V_7q6X_kGk)** — Demonstration of using the MCP beta endpoints to let an AI read Salesforce data natively.
+### ☁️ Salesforce MCP
+* **[Custom MCP Servers vs Alternative Pricing](https://youtu.be/0wpyRvwLd7I?is=BC39gQDEzn5kZQRa)
 
 ### 🐳 Docker Basics (For Complete Beginners)
 * **[Docker Crash Course for Absolute Beginners](https://www.youtube.com/watch?v=fqMOX6JJhGo)** — The best animated, visual explanation of what a Docker Container actually is.
