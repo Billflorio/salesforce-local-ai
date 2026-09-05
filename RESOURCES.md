@@ -7,7 +7,6 @@ If you prefer visual learning, here is a curated list of recent, highly-rated Yo
 
 ### 💬 LibreChat Setup Guides
 * **[LibreChat Official Channel](https://www.youtube.com/@LibreChat)** — The official source for updates and tutorials on Agents, Skills, and integrations.
-* **[LibreChat & Ollama Integration Guide](https://www.youtube.com/watch?v=5r4Z_M7Vb-U)** — Shows exactly how to connect LibreChat to a local Ollama instance.
 
 ### ☁️ Salesforce Agentforce & MCP
 * **[Building Custom MCP Servers for Salesforce](https://www.youtube.com/watch?v=gT_P3fQ_8Y4)** — Technical deep-dive into how the Model Context Protocol works with Salesforce REST APIs.
