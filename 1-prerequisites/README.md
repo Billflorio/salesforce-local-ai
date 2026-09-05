@@ -1,37 +1,37 @@
-# Prerequisites: The Beginner's Guide to the Tech Stack
+# Prerequisites: The Beginner's Guide to Not Getting Ripped Off
 
-If you are a Salesforce Admin and have never used Docker or LibreChat before, don't worry! This guide explains exactly what these tools are and why we are using them.
+If you're a Salesforce Admin and have never touched Docker or LibreChat before, chill. This isn't some corporate certification exam. This guide explains exactly what these tools are and why we're using them instead of paying for overpriced monthly subscriptions.
 
-## 1. What is Docker?
-Think of **Docker** like a virtual shipping container for software. Instead of you having to manually install 15 different tools and databases on your laptop to make an AI work, Docker packages all of them up into "containers." 
-When we run Docker, it automatically downloads and starts everything we need inside these isolated containers. It keeps your laptop clean and guarantees that the software works the exact same way on your machine as it does on anyone else's.
+## 1. What the Hell is Docker?
+Think of **Docker** like a virtual roadcase for software. Instead of you having to manually install 15 different tools, databases, and dependencies on your laptop until it crashes, Docker packages all of them up into isolated "containers." 
+When we run Docker, it automatically downloads and starts everything we need. It keeps your laptop from turning into a bloated mess and guarantees the software actually works on your machine exactly like it does on mine.
 
 ### How to Install Docker Desktop (Windows & Mac)
-1. **Download:** Go to [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/) and click "Download for Windows" (or Mac).
-2. **Install:** Run the installer you just downloaded. Leave all the default checkboxes checked (especially WSL 2 if you are on Windows).
-3. **Restart:** Your computer may prompt you to restart after installation.
-4. **Open Docker:** Search for "Docker Desktop" in your Start Menu and open it. Accept the terms.
-5. **Leave it running:** You will see a little whale icon in your system tray (bottom right corner). As long as that is running, you are good to go!
+1. **Download:** Go to [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/) and grab the installer.
+2. **Install:** Run it. Leave the default checkboxes checked (especially WSL 2 if you're stuck on Windows).
+3. **Restart:** Your computer might nag you to restart. Just do it.
+4. **Open Docker:** Open the app and click accept on whatever lawyer garbage they put in front of you.
+5. **Leave it running:** You'll see a little whale icon in your system tray. If the whale is there, you're good.
 
-*(Note: If you run our `start.ps1` script on Windows, it will even offer to automatically download and install Docker for you!)*
+*(Note: If you run our `start.ps1` script on Windows, it will literally do all this crap for you.)*
 
 ### How to Install Docker (Linux)
-**Do NOT install Docker Desktop!** Windows and Mac need Docker Desktop because they require a hidden virtual machine to run containers. Linux natively supports containers. 
-Simply install the native Docker Engine via your terminal:
+**Do NOT install Docker Desktop!** Windows and Mac need that garbage because they require a hidden virtual machine to run containers. Linux natively supports this stuff like a real operating system. 
+Just open your terminal and install the native Docker Engine:
 ```bash
 sudo apt update
 sudo apt install docker.io docker-compose-v2
 ```
 
 ## 2. What is LibreChat & Ollama?
-- **Ollama** is the engine running under the hood. It downloads the AI model (like Llama 3.1) and runs it using your computer's hardware.
-- **LibreChat** is the steering wheel. It is a beautiful, open-source web interface that looks exactly like ChatGPT, but it connects to your local Ollama engine. 
+- **Ollama** is the DIY engine running under the hood. It downloads the AI model (like Llama 3.1) and forces it to run on your actual hardware instead of someone else's cloud server.
+- **LibreChat** is the steering wheel. It's a gorgeous, open-source web interface that looks exactly like ChatGPT, but it connects to your local Ollama engine so you aren't feeding your data to corporate tech giants.
 
 ## 3. What is an MCP & mcp.json?
-**MCP** stands for Model Context Protocol. It is an open standard that allows AI models to talk to external data sources safely.
-Salesforce has built an MCP Server. When you ask LibreChat a question about Salesforce, LibreChat uses the MCP protocol to ask Salesforce for the data on your behalf.
-The `mcp.json` file is simply a configuration file that tells LibreChat:
-1. Where the Salesforce MCP server is located.
-2. What your secure "Access Token" (password) is so it can log in to your Salesforce Org.
+**MCP** (Model Context Protocol) is an open standard. Basically, it's the wire that lets AI models talk to external databases safely.
+Salesforce built an MCP Server (because of course they did). When you ask LibreChat a question about your Org, LibreChat uses this protocol to grab the data.
+The `mcp.json` file is just a config file that tells LibreChat:
+1. Where the Salesforce MCP server is hiding.
+2. What your secure "Access Token" is so it can actually log in.
 
-Once you have Docker Desktop installed and running, head back to the **main Repository Guide** on the GitHub homepage for instructions on how to download this code and boot it up on Windows, Mac, or Linux!
+Once you have Docker running, head back to the **main Repository Guide** and let's boot this thing up!

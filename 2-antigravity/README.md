@@ -1,45 +1,45 @@
-# Using Antigravity with Salesforce (Local AI Setup)
+# Hijacking Antigravity for Salesforce (Local AI Setup)
 
-Antigravity is an AI coding agent that lives on your machine and has access to your terminal. This repository provides a configuration so that any Salesforce Admin can use Antigravity to write Apex and administer their org **for free** using local AI models, without needing expensive cloud subscriptions.
+Antigravity is an AI coding agent that lives locally on your machine and has full access to your terminal. This setup is here so any Salesforce Admin can use Antigravity to write Apex and run their org **for absolutely free** using local AI models. No expensive cloud subscriptions. No paying rent for tools you should own.
 
 ## The Strategy: Local-First AI
-This setup uses **Ollama** to run a lightweight, open-source AI model locally on your computer. It is designed to work on standard laptops — including older, low-RAM machines. Antigravity will automatically use this local model to write your Apex and Flows. If a task is too complex for the local model, it can fallback to Google's Gemini (free tier), but our goal is 100% local, free administration.
+We use **Ollama** to run a lightweight, open-source AI model locally on your computer. It's designed to run on standard hardware—including that old, rusty laptop you've been putting off replacing. Antigravity uses this local model to write your code. 
 
 ### Choosing a Local Model
-The right model depends on your hardware:
+Pick your poison based on your hardware:
 
 | Machine | Recommended Model | RAM Required | Notes |
 |---|---|---|---|
-| GPU machine / modern laptop | `llama3.1:8b` | ~5 GB | Best quality, needs GPU or lots of RAM |
-| Older laptop / CPU-only | **`qwen2.5:1.5b`** | ~1 GB | ✅ Fast on any hardware |
-| Any machine (fallback) | Google Gemini (free) | Cloud | No local GPU needed |
+| GPU machine / modern laptop | `llama3.1:8b` | ~5 GB | Best quality, but demands a GPU or decent RAM |
+| Older laptop / CPU-only | **`qwen2.5:1.5b`** | ~1 GB | ✅ Fast, even on garbage hardware |
+| Any machine (fallback) | Google Gemini (free) | Cloud | The free cloud backup |
 
-> Both models are downloaded automatically. On a **GPU machine**, pick `llama3.1:8b` in the model selector. On an **older or CPU-only laptop**, pick `qwen2.5:1.5b` for a much faster response.
+> Both models download automatically. Got a **GPU**? Pick `llama3.1:8b`. Rocking a **CPU-only laptop from 2018**? Pick `qwen2.5:1.5b` so you don't melt your motherboard.
 
 ---
 
 ## 1. Prerequisites (For Admins)
 
 1. **Install the Salesforce CLI:**
-   Download and install the [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli).
+   Go grab the [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli).
 2. **Log into your Org:**
-   Open your terminal and run:
+   Pop open your terminal and run:
    ```bash
    sf org login web
    ```
-   *(This will open your browser. Log into your Sandbox or Dev Org.)*
+   *(This opens a browser. Log into your Sandbox or Dev Org. Do NOT run this on Production, obviously.)*
 
 ## 2. Local AI Setup (Automated)
 
-To make things as easy as possible, we have included an automated setup script that will download Ollama and pull the correct AI model for you.
+We wrote a script to do the heavy lifting so you don't have to manually download Ollama and pull models like a chump.
 
-1. **Download this code:** Clone or download this GitHub repository to your computer and extract it.
-2. Open your terminal (PowerShell for Windows, Terminal for Mac/Linux).
-3. Navigate into the `2-antigravity` folder:
+1. **Download this code:** Clone or download this GitHub repo and extract it.
+2. Open your terminal.
+3. CD into the directory:
    ```bash
    cd salesforce-local-ai/2-antigravity
    ```
-4. **Run the setup script:**
+4. **Run the script:**
    
    **Windows:**
    ```powershell
@@ -52,52 +52,52 @@ To make things as easy as possible, we have included an automated setup script t
    ./setup_local_ai.sh
    ```
 
-*(This script will check if you have the Salesforce CLI, Google Antigravity, and Ollama installed. If not, it will install them. Then, it will download a lightweight AI model optimized for instruction-following and tool use, which may take a few minutes).*
+*(This script checks if you have the CLI, Antigravity, and Ollama installed. If not, it installs them and pulls a model optimized for instruction-following).*
 
 ## 3. Configure Antigravity
 
-This repository contains a pre-built **Antigravity Skill** in the `.agents/` folder. This skill teaches Antigravity how to act like an expert Salesforce Developer and tells it to prioritize your local Ollama model.
+We threw a pre-built **Antigravity Skill** into the `.agents/` folder. This teaches Antigravity how to stop acting like a generic chatbot and start acting like a cynical Salesforce Developer who prioritizes your local Ollama model.
 
-1. Open the `2-antigravity` folder in your terminal or IDE.
-2. Launch **Antigravity**. Because you are in this folder, Antigravity will automatically detect the custom `.agents/skills/salesforce-admin` skill!
-3. In Antigravity's settings, configure it to use your local Ollama API (usually `http://localhost:11434` as the endpoint).
-   - **Older/low-RAM machine:** use `qwen2.5:1.5b` as the model
-   - **Modern machine with 8 GB+ free RAM:** use `qwen2.5-coder:7b` for better code quality
+1. Open the `2-antigravity` folder in your terminal.
+2. Launch **Antigravity**. It'll automatically detect the custom `.agents/skills/salesforce-admin` skill.
+3. In the settings, point it to your local Ollama API (usually `http://localhost:11434`).
+   - **Low-RAM laptop:** use `qwen2.5:1.5b`
+   - **Modern machine (8GB+ RAM):** use `qwen2.5-coder:7b`
 
-## 4. Start Coding!
+## 4. Start Coding
 
-Just ask Antigravity to do things in plain English! Because it has access to your terminal and the Salesforce Admin Skill, it will use `sf` commands on your behalf.
+Just ask Antigravity to do things in plain English. Because it has terminal access and the Salesforce Admin Skill, it will fire off `sf` commands for you.
 
 *Example Prompts:*
 - "Create a new custom object called Project__c and deploy it."
-- "Write an Apex trigger that updates the Account Status when an Opportunity is Closed Won, and run the tests."
-- "Pull down the Flow named 'User_Onboarding' and tell me what it does."
+- "Write an Apex trigger that updates Account Status when an Opportunity is Closed Won, and run the tests."
+- "Pull down the Flow named 'User_Onboarding' and tell me what the hell it does."
 
-*Behind the scenes, Antigravity uses your local model to generate the code, runs `sf` commands to push it to your org, and reads the success/error logs directly from your terminal!*
+*Antigravity uses the local model to generate code, pushes it to your org via the CLI, and reads the logs straight from your terminal.*
 
 ---
 
-## 5. Beyond Salesforce: General IT & Dev Environment Setup
-While Antigravity is a fantastic Salesforce developer, **it is fundamentally a general-purpose agent with terminal access.** This makes it incredibly powerful for tasks far outside of Apex coding.
+## 5. Beyond Salesforce: General Dev Environment Setup
+Antigravity isn't just for Apex. **It's a general-purpose agent with terminal access.** 
 
-You can ask Antigravity to fix issues on your actual computer, set up development environments, or troubleshoot OS-level errors.
+You can literally ask it to fix issues on your actual computer, set up development environments, or troubleshoot OS-level garbage.
 
 *Example Prompts:*
-- *"I'm getting a 'permission denied' error when running docker without sudo. Can you fix my Linux user groups so it just works?"*
+- *"I'm getting a 'permission denied' error when running docker without sudo. Fix my Linux user groups so it just works."*
 - *"Install the Salesforce Extensions pack in VS Code for me."*
-- *"Search my computer to find where LibreChat saved its configuration files."*
+- *"Search my computer to find where LibreChat buried its configuration files."*
 
 ## 6. The "Hub and Spoke" AI Architecture (Advanced)
-Antigravity itself is deeply optimized to run on Google's Gemini models natively. While you can swap the core model to a local one (like `qwen`), there is a very powerful alternative architecture: **The Hub and Spoke**.
+This is where the corporate tech platforms are ripping you off. They sell you overpriced "orchestration." Here's how to build it yourself for free: **The Hub and Spoke**.
 
-Instead of making Ollama the "brain" of Antigravity, you can leave Antigravity running on **Gemini (free tier) as the Orchestrator (Hub)**, and have it securely command your **local Ollama instance (Spoke)** via terminal commands!
+Instead of making Ollama do all the heavy thinking, you leave Antigravity running on **Gemini (free tier) as the Orchestrator (Hub)**, and have it securely command your **local Ollama instance (Spoke)** via terminal commands.
 
 **How it works:**
-Because Antigravity can run commands in your terminal, it can run `ollama run ...` or hit your local `http://localhost:11434/api/generate` endpoint on your behalf. 
+Antigravity can run `ollama run ...` or hit your local API endpoint right in your terminal. 
 
-This allows you to ask Antigravity to:
+This means you can:
 1. Orchestrate a massive workflow using Gemini's huge context window.
-2. Delegate specific sensitive data-processing tasks to your offline, local Ollama model securely via the terminal.
-3. Read the output from Ollama and format it for you. 
+2. Delegate sensitive data-processing tasks to your offline, local Ollama model securely.
+3. Read the output from Ollama without your data ever leaving your machine. 
 
-*Example:* *"Hey Antigravity, run this sensitive CSV file through my local `qwen` model using the terminal, and summarize the output for me."*
+*Example:* *"Hey Antigravity, run this sensitive CSV file through my local `qwen` model using the terminal, and summarize the output."*
