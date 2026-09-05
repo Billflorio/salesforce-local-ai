@@ -82,16 +82,17 @@ To shut it all down and free up your computer's memory when you're done, run `do
 ### [7. Security & Testing Plan](./TESTING.md)
 A comprehensive QA plan documenting how to validate that your integration properly respects Field Level Security (FLS) and Org-Wide Defaults (OWD), and ensures read-only access.
 
-### 8. Creating a Custom Salesforce SOQL Agent (Optional)
-If you want your local model (like `llama3.1:8b` or `qwen2.5:1.5b`) to reliably write SOQL queries without making syntax errors, you can create a custom **Agent** in LibreChat.
+### 8. Creating a Custom Salesforce SOQL Agent (Using Skills)
+If you want your local model (like `llama3.1:8b` or `qwen2.5:1.5b`) to reliably write SOQL queries without making syntax errors, you can give it a custom **Skill** in LibreChat.
 
-1. In LibreChat, click the **Agents** button (the robot icon) in the navigation bar.
-2. Click **Create Agent**.
-3. **Name:** Salesforce Data Analyst (or whatever you prefer).
-4. **Model:** Select your preferred local model (e.g., `qwen2.5:1.5b` or `llama3.1:8b`) or a Gemini model.
-5. **Tools:** Click the puzzle piece and enable your **Salesforce Object Reads** MCP tools.
-6. **Instructions:** Copy and paste the entire contents of the `3-librechat-config/SOQL_Agent_Instructions.md` file into this box. This provides the AI with strict SOQL rules (like avoiding `SELECT *` and enforcing `LIMIT 50`).
-7. Click **Save**.
+1. In LibreChat, open the side panel and click on **Skills**.
+2. Click **Create/Import Skill** and upload the `3-librechat-config/skills/SOQL_Expert/SKILL.md` file located in this repository.
+3. Next, click the **Agents** button (the robot icon) in the navigation bar.
+4. Click **Create Agent**.
+5. **Name:** Salesforce Data Analyst (or whatever you prefer).
+6. **Model:** Select your preferred local model.
+7. **Tools & Skills:** Click the puzzle piece to enable your **Salesforce Object Reads** MCP tool, AND toggle ON your newly imported **Salesforce SOQL Expert** skill.
+8. Click **Save**.
 
 You can now use this Agent to chat directly with your Salesforce data securely!
 ## ?? Additional Resources & Further Reading
