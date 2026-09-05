@@ -66,10 +66,19 @@ The commands in Step 3 will automatically pull the AI models and boot up the Lib
 3. You will be greeted by the LibreChat login screen. Since this is your first time, click **Sign Up** (or the equivalent registration button) to create your local admin account.
 4. Once logged in, you will see a ChatGPT-like interface. You can now select your local Ollama model from the dropdown at the top!
 
-### [5. Connect Salesforce MCP to LibreChat](./4-salesforce-mcp/README.md)
+### 5. Day-to-Day Usage (After Rebooting)
+Because this is meant to be a lightweight tool you can play around with, **the AI and databases will not automatically start when you turn your computer on.**
+
+Whenever you reboot your computer and want to use LibreChat again:
+- **Windows:** Open Docker Desktop, then open a PowerShell terminal in the `3-librechat-config` folder and run `docker compose up -d` (or just run the `start.ps1` script again).
+- **Mac / Linux:** Open your terminal in the `3-librechat-config` folder and run `docker compose up -d` (or `sudo docker compose up -d`).
+
+To shut it all down and free up your computer's memory when you're done, run `docker compose down`.
+
+### [6. Connect Salesforce MCP to LibreChat](./4-salesforce-mcp/README.md)
 **The core integration guide.** Follow this step-by-step guide to create the Salesforce External Client App (OAuth), configure the LibreChat UI, and successfully bind your local AI to your Salesforce Sandbox using the Agentforce MCP Beta endpoints.
 
-### [6. Security & Testing Plan](./TESTING.md)
+### [7. Security & Testing Plan](./TESTING.md)
 A comprehensive QA plan documenting how to validate that your integration properly respects Field Level Security (FLS) and Org-Wide Defaults (OWD), and ensures read-only access.
 ## ?? Additional Resources & Further Reading
 
