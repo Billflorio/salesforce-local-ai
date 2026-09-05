@@ -26,4 +26,4 @@ The `mcp.json` file is simply a configuration file that tells LibreChat:
 1. Where the Salesforce MCP server is located.
 2. What your secure "Access Token" (password) is so it can log in to your Salesforce Org.
 
-Once you have Docker Desktop installed and running, you can simply run the `start.ps1` script in the main folder to automate the rest!
+Once you have Docker Desktop installed and running, head back to the **main Repository Guide** on the GitHub homepage for instructions on how to download this code and boot it up on Windows, Mac, or Linux!
