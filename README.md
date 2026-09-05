@@ -28,14 +28,34 @@ Start here if you are new to Docker, LibreChat, or the Model Context Protocol (M
 Instructions for connecting **Antigravity** (your local AI coding agent) to your Salesforce CLI session for zero-config, terminal-based Apex and metadata generation.
 
 ### 3. Boot Up the AI Environment (LibreChat & Ollama)
-We have provided a one-click setup script to boot your local AI containers (located in the 3-librechat-config folder).
+We have provided a one-click setup script to boot your local AI containers (located in the `3-librechat-config` folder).
+
+**For Windows Users:**
 1. Open a PowerShell terminal.
 2. Navigate to this root folder.
 3. Run the script:
-   \\\powershell
+   ```powershell
    .\start.ps1
-   \\\
-4. The script will automatically pull the AI models and boot up the LibreChat web interface via Docker Compose. Wait about 60 seconds, then open http://localhost:3080 in your web browser and create your admin account.
+   ```
+
+**For Mac & Linux Users:**
+Mac and Linux natively support Docker without needing the PowerShell setup script.
+1. Open your Terminal.
+2. Navigate to the `3-librechat-config` folder:
+   ```bash
+   cd 3-librechat-config
+   ```
+3. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+4. Boot the containers (use `sudo docker compose up -d` on Linux if needed):
+   ```bash
+   docker compose up -d
+   ```
+
+**Next Steps (All Platforms):**
+The commands above will automatically pull the AI models and boot up the LibreChat web interface in the background. Wait about 60 seconds, then open `http://localhost:3080` in your web browser and create your admin account.
 
 ### [4. Connect Salesforce MCP to LibreChat](./4-salesforce-mcp/README.md)
 **The core integration guide.** Follow this step-by-step guide to create the Salesforce External Client App (OAuth), configure the LibreChat UI, and successfully bind your local AI to your Salesforce Sandbox using the Agentforce MCP Beta endpoints.
