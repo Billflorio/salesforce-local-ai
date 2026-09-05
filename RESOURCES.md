@@ -4,7 +4,6 @@ If you prefer visual learning, here is a curated list of recent, highly-rated Yo
 
 ### 🤖 Local AI & Ollama Tutorials
 * **[Ollama Full Tutorial for Beginners (2026)](https://www.youtube.com/watch?v=Wjrdr0NU4Sk)** — A highly comprehensive guide covering installation, running models, and checking hardware.
-* **[OpenCode + Ollama (Full Tutorial)](https://www.youtube.com/watch?v=y749i9G8k6s)** — Great if you specifically want to see how to use local AI for coding tasks.
 
 ### 💬 LibreChat Setup Guides
 * **[LibreChat Official Channel](https://www.youtube.com/@LibreChat)** — The official source for updates and tutorials on Agents, Skills, and integrations.
