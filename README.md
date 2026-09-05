@@ -58,13 +58,17 @@ Mac and Linux natively support Docker without needing the PowerShell setup scrip
    docker compose up -d
    ```
 
-**Next Steps (All Platforms):**
-The commands above will automatically pull the AI models and boot up the LibreChat web interface in the background. Wait about 60 seconds, then open `http://localhost:3080` in your web browser and create your admin account.
+### 4. Access LibreChat & Create Your Account
+The commands in Step 3 will automatically pull the AI models and boot up the LibreChat web interface in the background. 
+1. Wait about 60 seconds for the databases to initialize.
+2. Open your web browser and navigate to: **`http://localhost:3080`**
+3. You will be greeted by the LibreChat login screen. Since this is your first time, click **Sign Up** (or the equivalent registration button) to create your local admin account.
+4. Once logged in, you will see a ChatGPT-like interface. You can now select your local Ollama model from the dropdown at the top!
 
-### [4. Connect Salesforce MCP to LibreChat](./4-salesforce-mcp/README.md)
+### [5. Connect Salesforce MCP to LibreChat](./4-salesforce-mcp/README.md)
 **The core integration guide.** Follow this step-by-step guide to create the Salesforce External Client App (OAuth), configure the LibreChat UI, and successfully bind your local AI to your Salesforce Sandbox using the Agentforce MCP Beta endpoints.
 
-### [5. Security & Testing Plan](./TESTING.md)
+### [6. Security & Testing Plan](./TESTING.md)
 A comprehensive QA plan documenting how to validate that your integration properly respects Field Level Security (FLS) and Org-Wide Defaults (OWD), and ensures read-only access.
 ## ?? Additional Resources & Further Reading
 
