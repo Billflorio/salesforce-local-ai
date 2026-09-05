@@ -1,20 +1,22 @@
 # Zero Cost AI Solutions: Salesforce MCP Integration
 
 ![Presentation QR Code](qr-code.jpg)
-**?? DISCLAIMER & WARNING ??**
+**🚨 DISCLAIMER & WARNING 🚨**
 > This repository and its accompanying scripts are provided strictly for **educational and demonstration purposes**. 
 > - **DO NOT run these scripts against a Production Salesforce environment.** You should only use a Salesforce Developer Edition Org or a Sandbox.
 > - This project is a proof-of-concept to demonstrate how to bridge a local LLM with Salesforce using the Model Context Protocol (MCP).
 > - This repository **will not be maintained** and is provided "AS IS" without warranty of any kind. 
 > - By running the scripts or deploying the configurations contained in this repository, **you take full responsibility** for any consequences, including potential data loss or security breaches.
 
-## Project Overview
-This repository provides a "one-click" take-home architecture for Salesforce Admins to deploy a local Large Language Model (Ollama), a web interface (LibreChat), and connect it securely to their Salesforce environment via the Free Hosted MCP Servers Beta.
+## What is this?
+Salesforce is a bloated, overpriced mess, and companies like OpenAI want to charge you monthly rent just to read your own damn data. Screw that. 
+
+This repository is how you hijack Salesforce's new MCP beta feature and run an AI completely locally on your beat-up laptop for absolutely zero dollars. No cloud subscriptions, no corporate surveillance, just DIY tools taking back control of your own database. We're using Ollama to run the models and LibreChat for the web interface.
 
 ### Mac & Linux Support
-This entire stack is natively cross-platform! Everything is orchestrated using standard Docker containers and volumes.
-- **Mac (Apple Silicon):** Docker will automatically pull the ARM64 versions of these containers. They run incredibly fast on M1/M2/M3 chips.
-- **Linux:** You do not need to run the .ps1 script. You can simply boot the stack using the industry standard command: docker compose up -d in your terminal. Ensure your user is in the docker group or run it with sudo.
+This entire stack is natively cross-platform because we stuffed it all into Docker containers.
+- **Mac (Apple Silicon):** Docker will automatically pull the ARM64 versions. They run ridiculously fast on M1/M2/M3 chips.
+- **Linux:** You don't need the janky Windows powershell script. Just boot the stack using the industry standard command: `docker compose up -d` in your terminal. Make sure your user is in the docker group or run it with sudo.
 
 ---
 
