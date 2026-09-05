@@ -1,92 +1,73 @@
 <#
 .SYNOPSIS
-Sets up the local AI environment for Salesforce administration.
-.DESCRIPTION
-This script checks for the Salesforce CLI, Antigravity, and Ollama, installs them if they are missing, and downloads the required lightweight local AI model (qwen2.5-coder:7b).
+Sets up the Salesforce CLI and optionally the local AI environment for Antigravity.
 #>
 
-Write-Host "Starting Local AI Setup for Salesforce..." -ForegroundColor Cyan
-
-# 0. Check if Ollama is already running via Docker
-Write-Host "`n[0/5] Checking if Ollama is already running (e.g., via LibreChat Docker)..." -ForegroundColor Yellow
-$skipOllama = $false
-try {
-    $response = Invoke-RestMethod -Uri "http://localhost:11434" -Method Get -ErrorAction Stop
-    if ($response -match "Ollama is running") {
-        Write-Host "Success: Ollama is already running on port 11434." -ForegroundColor Green
-        Write-Host "Skipping the native Ollama installation so you don't waste 5GB downloading a duplicate model." -ForegroundColor Cyan
-        $skipOllama = $true
-    }
-} catch {
-    Write-Host "Ollama is not running. Proceeding with native installation." -ForegroundColor Magenta
-}
+Write-Host "Starting Antigravity Setup for Salesforce..." -ForegroundColor Cyan
 
 # 1. Check for Salesforce CLI
-Write-Host "`n[1/5] Checking for Salesforce CLI (sf)..." -ForegroundColor Yellow
+Write-Host "`n[1/3] Checking for Salesforce CLI (sf)..." -ForegroundColor Yellow
 if (Get-Command sf -ErrorAction SilentlyContinue) {
-    $sfVersion = (sf --version) -join " "
-    Write-Host "Success: Salesforce CLI is already installed ($sfVersion)" -ForegroundColor Green
+    Write-Host "Success: Salesforce CLI is already installed" -ForegroundColor Green
 } else {
     Write-Host "Salesforce CLI not found. Installing via winget..." -ForegroundColor Magenta
     winget install Salesforce.CLI --accept-source-agreements --accept-package-agreements
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "Warning: Failed to install Salesforce CLI automatically. Please download it from https://developer.salesforce.com/tools/salesforcecli" -ForegroundColor Red
-    } else {
-        Write-Host "Success: Salesforce CLI installed." -ForegroundColor Green
-    }
 }
 
 # 2. Check for Google Antigravity
-Write-Host "`n[2/5] Checking for Google Antigravity..." -ForegroundColor Yellow
+Write-Host "`n[2/3] Checking for Google Antigravity..." -ForegroundColor Yellow
 $agyPath = Join-Path $env:LOCALAPPDATA "Programs\antigravity\Antigravity.exe"
 if (Test-Path $agyPath) {
     Write-Host "Success: Google Antigravity is already installed." -ForegroundColor Green
 } else {
     Write-Host "Google Antigravity not found. Installing via winget..." -ForegroundColor Magenta
     winget install Google.Antigravity --accept-source-agreements --accept-package-agreements
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "Warning: Failed to install Antigravity automatically. Please download it from https://antigravity.google/" -ForegroundColor Red
-    } else {
-        Write-Host "Success: Google Antigravity installed." -ForegroundColor Green
-    }
 }
 
-if (-not $skipOllama) {
-    # 3. Check for Ollama
-    Write-Host "`n[3/5] Checking for Ollama (Local AI Runner)..." -ForegroundColor Yellow
-    if (Get-Command ollama -ErrorAction SilentlyContinue) {
-        Write-Host "Success: Ollama is already installed." -ForegroundColor Green
-    } else {
-        Write-Host "Ollama not found. Installing via winget..." -ForegroundColor Magenta
-        winget install Ollama.Ollama --accept-source-agreements --accept-package-agreements
-        
-        # Reload environment variables for the current process so 'ollama' command works immediately
-        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-        
-        if (Get-Command ollama -ErrorAction SilentlyContinue) {
-            Write-Host "Success: Ollama installed successfully." -ForegroundColor Green
-        } else {
-            Write-Host "Ollama installed, but you may need to close and reopen your terminal for it to be recognized." -ForegroundColor Yellow
+# 3. Optional Local AI
+Write-Host "`n[3/3] OPTIONAL: Local AI Engine (Ollama)" -ForegroundColor Yellow
+Write-Host "Antigravity works incredibly fast out-of-the-box using the free cloud model." -ForegroundColor Cyan
+Write-Host "However, if you want to prove a point and process your data 100% locally, we can install Ollama and the MCP bridge right now." -ForegroundColor Cyan
+$choice = Read-Host "Do you want to download a 5GB local AI model? (Y/N)"
+
+if ($choice -match "^[Yy]") {
+    $skipOllama = $false
+    try {
+        $response = Invoke-RestMethod -Uri "http://localhost:11434" -Method Get -ErrorAction Stop
+        if ($response -match "Ollama is running") {
+            Write-Host "Ollama is already running. Skipping massive download." -ForegroundColor Green
+            $skipOllama = $true
         }
+    } catch {
+        Write-Host "Ollama is not running. Proceeding with native installation." -ForegroundColor Magenta
     }
 
-    # 4. Pull the required model
-    Write-Host "`n[4/5] Downloading the lightweight AI model (qwen2.5-coder:7b)..." -ForegroundColor Yellow
-    Write-Host "This might take a few minutes depending on your internet connection." -ForegroundColor Cyan
-    # Start the Ollama app in the background just in case it isn't running
-    Start-Process "ollama" -ArgumentList "serve" -WindowStyle Hidden -ErrorAction SilentlyContinue
+    if (-not $skipOllama) {
+        if (-not (Get-Command ollama -ErrorAction SilentlyContinue)) {
+            winget install Ollama.Ollama --accept-source-agreements --accept-package-agreements
+            $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+        }
+        Start-Process "ollama" -ArgumentList "serve" -WindowStyle Hidden -ErrorAction SilentlyContinue
+        Write-Host "Downloading qwen2.5-coder:7b (4.7GB)..." -ForegroundColor Yellow
+        ollama pull qwen2.5-coder:7b
+    }
 
-    ollama pull qwen2.5-coder:7b
+    Write-Host "Configuring Antigravity MCP Bridge..." -ForegroundColor Yellow
+    $configDir = Join-Path $env:USERPROFILE ".gemini\config"
+    if (!(Test-Path -Path $configDir)) { New-Item -ItemType Directory -Path $configDir | Out-Null }
+    
+    $configJson = @{
+        mcpServers = @{
+            "ollama-bridge" = @{
+                command = "npx"
+                args = @("-y", "ollama-mcp")
+            }
+        }
+    } | ConvertTo-Json -Depth 5
+    Set-Content -Path (Join-Path $configDir "mcp_config.json") -Value $configJson
+    Write-Host "Success: Ollama Bridge configured globally!" -ForegroundColor Green
+} else {
+    Write-Host "Skipping local AI installation. Antigravity will use the blazing-fast cloud model." -ForegroundColor Green
 }
-
-# 5. Hijack Antigravity Endpoint
-Write-Host "`n[5/5] Forcing Antigravity to use local Ollama so you don't have to click through settings..." -ForegroundColor Yellow
-if (!(Test-Path -Path ".agents")) { New-Item -ItemType Directory -Path ".agents" | Out-Null }
-$configJson = @{
-    api_endpoint = "http://localhost:11434"
-    default_model = "qwen2.5-coder:7b"
-} | ConvertTo-Json
-Set-Content -Path ".agents\config.json" -Value $configJson
-Write-Host "Success: Local endpoint configured. No UI clicking required." -ForegroundColor Green
 
 Write-Host "`n=== Setup Complete! ===" -ForegroundColor Green
