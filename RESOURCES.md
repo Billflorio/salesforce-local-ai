@@ -7,7 +7,6 @@ If you prefer visual learning, here is a curated list of recent, highly-rated Yo
 
 ### 💬 LibreChat Setup Guides
 * **[LibreChat Official Channel](https://www.youtube.com/@LibreChat)** — The official source for updates and tutorials on Agents, Skills, and integrations.
-* **[Install LibreChat Locally with Docker](https://www.youtube.com/watch?v=8mGf8e2Z_Lw)** — A popular walk-through of the `docker-compose up` process.
 * **[LibreChat & Ollama Integration Guide](https://www.youtube.com/watch?v=5r4Z_M7Vb-U)** — Shows exactly how to connect LibreChat to a local Ollama instance.
 
 ### ☁️ Salesforce Agentforce & MCP
