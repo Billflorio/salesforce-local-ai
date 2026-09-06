@@ -3,7 +3,7 @@
 Welcome to the main documentation for the Custom Salesforce AI Chatbot! This project demonstrates how to build a fully capable, enterprise-grade AI Copilot using **100% native Salesforce components** (LWC + Apex) connected to Google's Gemini API.
 
 ## 🛠️ How It Was Created
-This project was conceptualized and developed using **Google Antigravity**, utilizing a collaborative mix of **Claude** and **Gemini** models.
+This project was conceptualized and developed using **Google Antigravity**, utilizing a collaborative mix of **Claude** and **Gemini** models in about 1.5 hours.
 * **The Process:** The models worked together in an agentic coding environment to scaffold the project, navigate Salesforce CLI limitations, and write the custom Apex and LWC code. 
 * **Overcoming Obstacles:** The agents collaboratively solved complex integration hurdles, such as modern External Credential permission mappings in Salesforce, dynamic schema retrieval, bypassing Apex's notorious "uncommitted work pending" DML-before-callout limitation, and managing Gemini API payload quirks (like mixing `googleSearch` tools with custom Function Declarations).
 
