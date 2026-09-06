@@ -1,0 +1,50 @@
+.chat-container {
+    height: 300px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+}
+.message-user {
+    text-align: right;
+    background-color: #d8edff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+.message-ai {
+    text-align: left;
+    background-color: #f3f3f3;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+.message-error {
+    border-left: 3px solid #c23934;
+}
+
+/* Tighten up rich-text spacing inside chat bubbles */
+lightning-formatted-rich-text h1,
+lightning-formatted-rich-text h2,
+lightning-formatted-rich-text h3 {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-size: 1em;
+    font-weight: bold;
+}
+lightning-formatted-rich-text ul,
+lightning-formatted-rich-text ol {
+    margin: 4px 0 4px 16px;
+    padding: 0;
+}
+lightning-formatted-rich-text pre {
+    background-color: #e8e8e8;
+    padding: 8px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 4px 0;
+}
+lightning-formatted-rich-text code {
+    background-color: #e8e8e8;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}

@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="Gemini Assistant" icon-name="custom:custom93">
+        <div class="chat-container slds-p-around_medium">
+            <template for:each={messages} for:item="msg">
+                <div key={msg.id} class={msg.cssClass}>
+                    <strong>{msg.sender}:</strong>
+                    <lightning-formatted-rich-text value={msg.htmlText}></lightning-formatted-rich-text>
+                </div>
+            </template>
+            <template if:true={isLoading}>
+                <div class="slds-m-vertical_small slds-align_absolute-center">
+                    <lightning-spinner alternative-text="Thinking..." size="small"></lightning-spinner>
+                </div>
+            </template>
+        </div>
+        <div class="input-container slds-p-around_medium slds-grid slds-grid_vertical-align-end">
+            <lightning-input
+                class="slds-col"
+                type="text"
+                placeholder="Ask Gemini something..."
+                value={userInput}
+                onchange={handleInputChange}
+                onkeypress={handleKeyPress}>
+            </lightning-input>
+            <lightning-button
+                label="Send"
+                variant="brand"
+                class="slds-m-left_small"
+                onclick={handleSend}
+                disabled={isLoading}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

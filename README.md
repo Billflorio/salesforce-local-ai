@@ -104,6 +104,11 @@ If you want your local model (like `llama3.1:8b` or `qwen2.5:1.5b`) to reliably 
 8. Click **Save**.
 
 You can now use this Agent to chat directly with your Salesforce data securely!
+
+### [9. Build a Custom Native LWC AI Chatbot (No Agentforce Required)](./5-lwc-chatbot/README.md)
+If you want to build a fully capable, enterprise-grade AI Copilot using **100% native Salesforce components** (LWC + Apex) connected to Google's Gemini API, check out this module.
+We detail how it was created using Antigravity (mixing Claude and Gemini), what it does, its current limitations, and the massive overall value of connecting this custom Salesforce solution to your organization's existing AI infrastructure versus purchasing Agentforce.
+
 ## 📚 Additional Resources & Further Reading
 
 If you want to take this architecture to the next level or scale it for your organization, check out these official resources:
