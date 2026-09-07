@@ -25,6 +25,11 @@ If you are anxious about following all the command-line instructions, installing
 
 Antigravity is an AI agent that lives on your computer with full terminal access. Once installed, it acts as a real-time IT assistant. You can literally ask it to *"help me install Docker,"* *"read these error logs,"* or *"fix my Linux user permissions"* and it will do the heavy lifting for you while you follow the rest of this guide!
 
+## 🗣️ Pro Tip: High-Quality Neural Voice for Presentations
+If you want the AI to speak its presentation notes out loud using a natural, human-sounding voice (instead of the robotic default), we recommend using **Piper TTS**. It runs completely offline and sounds incredible.
+
+👉 **[See PIPER_SETUP.md](PIPER_SETUP.md) for the 2-minute installation guide.**
+
 ---
 
 ## 📚 Repository Guide
