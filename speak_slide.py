@@ -6,6 +6,12 @@ import shutil
 import tempfile
 from pptx import Presentation
 
+if hasattr(sys.stdout, 'reconfigure'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 def find_piper():
     """Locate piper binary and an .onnx model file across Windows, Linux, and macOS."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -13,6 +19,7 @@ def find_piper():
     
     if system == "Windows":
         candidates = [
+            os.path.join(script_dir, "piper", "piper", "piper.exe"),
             os.path.join(script_dir, "piper", "piper.exe"),
             os.path.join(script_dir, "piper.exe"),
             "piper.exe",
@@ -83,7 +90,7 @@ def speak_text(text):
     # 1. Try Piper neural TTS first on all platforms
     piper_bin, model_path = find_piper()
     if piper_bin and model_path:
-        print(f"🎙️ Using Piper Neural Voice: {os.path.basename(model_path)}")
+        print(f"[PIPER TTS] Using Piper Neural Voice: {os.path.basename(model_path)}")
         wav_path = os.path.join(tempfile.gettempdir(), "slide_speech.wav")
         piper_proc = subprocess.Popen(
             [piper_bin, "--model", model_path, "--output_file", wav_path],
@@ -95,7 +102,7 @@ def speak_text(text):
             return
 
     # 2. Platform-native fallback if Piper is not installed
-    print(f"⚠️ Piper neural voice not found. Falling back to native {system} TTS...")
+    print(f"[SYSTEM TTS] Piper neural voice not found. Falling back to native {system} TTS...")
     if system == "Windows":
         clean_text = text.replace("'", "''").replace('"', '`"')
         ps_cmd = f"Add-Type -AssemblyName System.Speech; $synth = New-Object System.Speech.Synthesis.SpeechSynthesizer; $synth.Rate = 1; $synth.Speak('{clean_text}')"
