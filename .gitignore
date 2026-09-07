@@ -8,3 +8,12 @@ Hybrid_Salesforce_AI_Deck.pptx
 Punk_Rock_Hybrid_Deck.pptx
 Zero_Cost_AI_Presentation.pptx
 Salesforce vs.pdf
+
+# Piper TTS local binaries & models
+piper/
+*.onnx
+*.onnx.json
+
+# Python cache
+__pycache__/
+*.pyc

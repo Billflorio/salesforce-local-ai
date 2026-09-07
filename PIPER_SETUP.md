@@ -15,10 +15,31 @@ curl -sLO https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/hfc_
 curl -sLO https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/hfc_male/medium/en_US-hfc_male-medium.onnx.json
 ```
 
+## Quick Install (Windows x64)
+
+Open PowerShell in the root of this repo:
+```powershell
+# 1. Create the piper directory and download the Windows release
+New-Item -ItemType Directory -Force -Path piper | Out-Null
+Invoke-WebRequest -Uri "https://github.com/rhasspy/piper/releases/download/2023.11.14-2/piper_windows_amd64.zip" -OutFile "piper\piper.zip"
+Expand-Archive -Path "piper\piper.zip" -DestinationPath "piper" -Force
+Remove-Item "piper\piper.zip"
+
+# 2. Download a voice model (hfc_male - natural US English male voice)
+Invoke-WebRequest -Uri "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/hfc_male/medium/en_US-hfc_male-medium.onnx" -OutFile "piper\en_US-hfc_male-medium.onnx"
+Invoke-WebRequest -Uri "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/hfc_male/medium/en_US-hfc_male-medium.onnx.json" -OutFile "piper\en_US-hfc_male-medium.onnx.json"
+```
+
 ## Test It
 
+**Linux:**
 ```bash
 echo "Hello, this is Antigravity speaking with a neural voice." | ./piper --model en_US-hfc_male-medium.onnx --output_file /tmp/test.wav && paplay /tmp/test.wav
+```
+
+**Windows (or any OS via `speak_slide.py`):**
+```bash
+python speak_slide.py 1
 ```
 
 ## Other Voices
