@@ -1,0 +1,13 @@
+Here is how Gemini evaluated a Salesforce Flow's fault paths:
+1. Hide the Ugly Error from the User (UX) - Show a friendly message instead of {!$Flow.FaultMessage}.
+2. Add Persistent Error Logging - Use a Create Records element or Email Alert to log the error to a custom object.
+3. Missing Data Rollback - Add a Rollback Records element before the Fault Screen to undo partial database changes.
+
+Here is how Ollama (you) evaluated the same flow:
+1. Add more descriptive error messages.
+2. Add a Retry Mechanism.
+3. Add Logging.
+4. Send an Alert or Notification.
+5. Add a fallback path.
+
+Based on comparing these two evaluations, what skills or knowledge areas would you say Gemini is lacking compared to Ollama when it comes to Salesforce Flows?

@@ -30,6 +30,17 @@ If you want the AI to speak its presentation notes out loud using a natural, hum
 
 👉 **[See PIPER_SETUP.md](PIPER_SETUP.md) for the 2-minute installation guide.**
 
+## 🎤 Presentation Deck & Audio Rehearsal
+Testing or presenting this talk? The official slide deck and automated speaker rehearsal script are ready to go:
+- **Presentation Deck:** [`Final_AIOnDimesDeck.pptx`](Final_AIOnDimesDeck.pptx)
+- **Slide Speaker Script:** [`speak_slide.py`](speak_slide.py)
+
+To test the presentation and have your machine read the speaker notes out loud for any slide:
+```bash
+python speak_slide.py <slide_number>
+```
+*(e.g., `python speak_slide.py 1` reads Slide 1. Runs seamlessly on Windows via SAPI, Linux via Piper / espeak, and macOS via `say`.)*
+
 ---
 
 ## 📚 Repository Guide
