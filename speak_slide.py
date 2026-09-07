@@ -4,6 +4,8 @@ import platform
 import subprocess
 import shutil
 import tempfile
+import json
+import re
 from pptx import Presentation
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -12,7 +14,23 @@ if hasattr(sys.stdout, 'reconfigure'):
     except Exception:
         pass
 
-def find_piper():
+def load_pronunciations(text):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    guide_path = os.path.join(script_dir, "pronunciations.json")
+    if os.path.exists(guide_path):
+        try:
+            with open(guide_path, "r", encoding="utf-8") as f:
+                pronunciations = json.load(f)
+                for word, replacement in pronunciations.items():
+                    pattern = re.compile(re.escape(word), re.IGNORECASE)
+                    text = pattern.sub(replacement, text)
+        except Exception as err:
+            print(f"Warning: Failed to load pronunciations.json: {err}")
+    return text
+
+def speak_text(text):
+    text = load_pronunciations(text)
+    system = platform.system()
     """Locate piper binary and an .onnx model file across Windows, Linux, and macOS."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     system = platform.system()

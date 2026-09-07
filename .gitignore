@@ -17,3 +17,8 @@ piper/
 # Python cache
 __pycache__/
 *.pyc
+
+# Temporary scratch scripts and logs
+scratch/
+3-librechat-config/librechat_logs.txt
+
