@@ -35,6 +35,8 @@ services:
     image: ollama/ollama:latest
     container_name: librechat-ollama
     ports:
+      # NOTE: If you also run Ollama natively (e.g., via 2-antigravity/setup_local_ai.ps1),
+      # change 11434:11434 to 11435:11434 to avoid a port conflict.
       - 11434:11434
     volumes:
       - ollama_data:/root/.ollama

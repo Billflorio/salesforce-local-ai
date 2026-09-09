@@ -28,9 +28,7 @@ def load_pronunciations(text):
             print(f"Warning: Failed to load pronunciations.json: {err}")
     return text
 
-def speak_text(text):
-    text = load_pronunciations(text)
-    system = platform.system()
+def find_piper():
     """Locate piper binary and an .onnx model file across Windows, Linux, and macOS."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     system = platform.system()
@@ -103,6 +101,7 @@ def play_wav(wav_path):
             print(f"Generated {wav_path} but couldn't find paplay or aplay.")
 
 def speak_text(text):
+    text = load_pronunciations(text)
     system = platform.system()
     
     # 1. Try Piper neural TTS first on all platforms
@@ -168,7 +167,7 @@ def main():
         notes = slide.notes_slide.notes_text_frame.text
         print(f"\n--- SPEAKING SLIDE {slide_num} NOTES ---")
         print(notes)
-        print("---------------------------------------\n")
+        print("--------------------------------------\n")
         speak_text(notes)
     else:
         print(f"No notes found on slide {slide_num}")
