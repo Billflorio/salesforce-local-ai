@@ -39,7 +39,7 @@ try:
         # Use PowerShell's built-in media player on Windows
         ps_cmd = f'(New-Object Media.SoundPlayer).SoundLocation = ""; Add-Type -AssemblyName presentationCore; $mp = New-Object System.Windows.Media.MediaPlayer; $mp.Open([uri]"{audio_path}"); Start-Sleep -Milliseconds 500; $mp.Play(); Start-Sleep -Seconds ([math]::Ceiling($mp.NaturalDuration.TimeSpan.TotalSeconds + 1))'
         # Simpler fallback: use the default media handler
-        os.startfile(audio_path)
+        subprocess.run(["powershell", "-Command", ps_cmd])
         import time
         time.sleep(5)  # Give time for audio to play
     elif system == "Darwin":
