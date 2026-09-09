@@ -1,7 +1,7 @@
 # Zero Cost AI Solutions: Salesforce MCP Integration
 
 ![Presentation QR Code](qr-code.jpg)
-**🚨 DISCLAIMER & WARNING 🚨**
+**ðŸš¨ DISCLAIMER & WARNING ðŸš¨**
 > This repository and its accompanying scripts are provided strictly for **educational and demonstration purposes**. 
 > - **DO NOT run these scripts against a Production Salesforce environment.** You should only use a Salesforce Developer Edition Org or a Sandbox.
 > - This project is a proof-of-concept to demonstrate how to bridge a local LLM with Salesforce using the Model Context Protocol (MCP).
@@ -11,11 +11,11 @@
 ## What is this?
 ## ?? Strategic Goals / Why We Built This
 
-This project isn't just a technical demo�it's a blueprint for taking back control of your organization's AI strategy:
+This project isn't just a technical demo—it's a blueprint for taking back control of your organization's AI strategy:
 
 1. **Avoid Vendor Lock-In:** You do not need to rely on a proprietary, Salesforce-branded Agentic Builder or get trapped in expensive, walled-garden AI ecosystems. Desktop AI builders like Antigravity give you the exact same power, natively on your machine, with full control over the environment.
 2. **Eliminate Per-Seat Licensing:** By deploying an open-source, enterprise-ready central command like **LibreChat**, your organization can manage what models are used for what needs without paying a mandatory monthly subscription for every single employee. You only pay for the raw compute you actually use.
-3. **Free CRM Connections:** The Salesforce **Model Context Protocol (MCP) Server** is completely free on the core CRM platform. By leveraging this open standard now, you future-proof your architecture and protect your organization against scenarios where vendors start aggressively charging for token quotas or proprietary API compute pricing models.
+3. **Free CRM Connections:** The Salesforce **Model Context Protocol (MCP) Server** is API (not token or consumption) on core CRM platform. By leveraging this open standard now, you future-proof your architecture and protect your organization against scenarios where vendors start aggressively charging for token quotas or proprietary API compute pricing models.
 4. **Native Lightning Web Components:** We include a custom LWC to prove that you can run chats and seamlessly connect custom LLMs directly within the Salesforce platform interface, entirely on your own terms.
 
 Salesforce is a bloated, overpriced mess, and companies like OpenAI want to charge you monthly rent just to read your own damn data. Screw that. 
@@ -29,17 +29,17 @@ This entire stack is natively cross-platform because we stuffed it all into Dock
 
 ---
 
-## 💡 Pro Tip for Beginners: Install Antigravity First!
+## ðŸ’¡ Pro Tip for Beginners: Install Antigravity First!
 If you are anxious about following all the command-line instructions, installing Docker, or configuring your environment, **start by installing Antigravity (Step 2) first.** 
 
 Antigravity is an AI agent that lives on your computer with full terminal access. Once installed, it acts as a real-time IT assistant. You can literally ask it to *"help me install Docker,"* *"read these error logs,"* or *"fix my Linux user permissions"* and it will do the heavy lifting for you while you follow the rest of this guide!
 
-## 🗣️ Pro Tip: High-Quality Neural Voice for Presentations
+## ðŸ—£ï¸ Pro Tip: High-Quality Neural Voice for Presentations
 If you want the AI to speak its presentation notes out loud using a natural, human-sounding voice (instead of the robotic default), we recommend using **Piper TTS**. It runs completely offline and sounds incredible.
 
-👉 **[See PIPER_SETUP.md](PIPER_SETUP.md) for the 2-minute installation guide.**
+ðŸ‘‰ **[See PIPER_SETUP.md](PIPER_SETUP.md) for the 2-minute installation guide.**
 
-## 🎤 Presentation Deck & Audio Rehearsal
+## ðŸŽ¤ Presentation Deck & Audio Rehearsal
 Testing or presenting this talk? The official slide deck and automated speaker rehearsal script are ready to go:
 - **Presentation Deck:** [`Final_AIOnDimesDeck.pptx`](Final_AIOnDimesDeck.pptx)
 - **Slide Speaker Script:** [`speak_slide.py`](speak_slide.py)
@@ -52,7 +52,7 @@ python speak_slide.py <slide_number>
 
 ---
 
-## 📚 Repository Guide
+## ðŸ“š Repository Guide
 
 This repository is broken down into modules to help you understand and deploy the architecture step-by-step. Please review the documentation in each folder:
 
@@ -134,11 +134,11 @@ You can now use this Agent to chat directly with your Salesforce data securely!
 If you want to build a fully capable, enterprise-grade AI Copilot using **100% native Salesforce components** (LWC + Apex) connected to Google's Gemini API, check out this module.
 We detail how it was created using Antigravity (mixing Claude and Gemini), what it does, its current limitations, and the massive overall value of connecting this custom Salesforce solution to your organization's existing AI infrastructure versus purchasing Agentforce.
 
-## 📚 Additional Resources & Further Reading
+## ðŸ“š Additional Resources & Further Reading
 
 If you want to take this architecture to the next level or scale it for your organization, check out these official resources:
 
-### 🎥 [Video Resources & YouTube Tutorials](./RESOURCES.md)
+### ðŸŽ¥ [Video Resources & YouTube Tutorials](./RESOURCES.md)
 If you prefer visual learning, check out our **[curated list of recent YouTube tutorials](./RESOURCES.md)** covering Docker basics, LibreChat setup, Ollama, and Salesforce MCP.
 
 ### Salesforce & Developer Tools
