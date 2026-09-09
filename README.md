@@ -17,9 +17,6 @@ This project isn't just a technical demo—it's a blueprint for taking back cont
 2. **Eliminate Per-Seat Licensing:** By deploying an open-source, enterprise-ready central command like **LibreChat**, your organization can manage what models are used for what needs without paying a mandatory monthly subscription for every single employee. You only pay for the raw compute you actually use.
 3. **Free CRM Connections:** The Salesforce **Model Context Protocol (MCP) Server** is API (not token or consumption) on core CRM platform. By leveraging this open standard now, you future-proof your architecture and protect your organization against scenarios where vendors start aggressively charging for token quotas or proprietary API compute pricing models.
 4. **Native Lightning Web Components:** We include a custom LWC to prove that you can run chats and seamlessly connect custom LLMs directly within the Salesforce platform interface, entirely on your own terms.
- 
-
-This repository is a quick set-up path for proof of concept. Recommend action, install antigravity, codex, Claude Code etc. Have the agents assist in quick set-up, identifying local machine quirks etc. 
 
 ### Mac & Linux Support
 This entire stack is natively cross-platform because we stuffed it all into Docker containers.
@@ -28,17 +25,17 @@ This entire stack is natively cross-platform because we stuffed it all into Dock
 
 ---
 
-## ðŸ’¡ Pro Tip for Beginners: Install Antigravity First!
+Pro Tip: Install Antigravity First! Or use the desktop application you're comfortable with VSCode, Cursor, Claude Code etc.
 If you are anxious about following all the command-line instructions, installing Docker, or configuring your environment, **start by installing Antigravity (Step 2) first.** 
 
 Antigravity is an AI agent that lives on your computer with full terminal access. Once installed, it acts as a real-time IT assistant. You can literally ask it to *"help me install Docker,"* *"read these error logs,"* or *"fix my Linux user permissions"* and it will do the heavy lifting for you while you follow the rest of this guide!
 
-## ðŸ—£ï¸ Pro Tip: High-Quality Neural Voice for Presentations
+Pro Tip: High-Quality Neural Voice for Presentations
 If you want the AI to speak its presentation notes out loud using a natural, human-sounding voice (instead of the robotic default), we recommend using **Piper TTS**. It runs completely offline and sounds incredible.
 
-ðŸ‘‰ **[See PIPER_SETUP.md](PIPER_SETUP.md) for the 2-minute installation guide.**
+**[See PIPER_SETUP.md](PIPER_SETUP.md) for the 2-minute installation guide.**
 
-## ðŸŽ¤ Presentation Deck & Audio Rehearsal
+ Presentation Deck & Audio Rehearsal
 Testing or presenting this talk? The official slide deck and automated speaker rehearsal script are ready to go:
 - **Presentation Deck:** [`Final_AIOnDimesDeck.pptx`](Final_AIOnDimesDeck.pptx)
 - **Slide Speaker Script:** [`speak_slide.py`](speak_slide.py)
