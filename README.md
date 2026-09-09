@@ -48,7 +48,7 @@ python speak_slide.py <slide_number>
 
 ---
 
-## ðŸ“š Repository Guide
+## Repository Guide
 
 This repository is broken down into modules to help you understand and deploy the architecture step-by-step. Please review the documentation in each folder:
 
