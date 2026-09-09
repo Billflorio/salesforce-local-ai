@@ -9,6 +9,15 @@
 > - By running the scripts or deploying the configurations contained in this repository, **you take full responsibility** for any consequences, including potential data loss or security breaches.
 
 ## What is this?
+## ?? Strategic Goals / Why We Built This
+
+This project isn't just a technical demo—it's a blueprint for taking back control of your organization's AI strategy:
+
+1. **Avoid Vendor Lock-In:** You do not need to rely on a proprietary, Salesforce-branded Agentic Builder or get trapped in expensive, walled-garden AI ecosystems. Desktop AI builders like Antigravity give you the exact same power, natively on your machine, with full control over the environment.
+2. **Eliminate Per-Seat Licensing:** By deploying an open-source, enterprise-ready central command like **LibreChat**, your organization can manage what models are used for what needs without paying a mandatory monthly subscription for every single employee. You only pay for the raw compute you actually use.
+3. **Free CRM Connections:** The Salesforce **Model Context Protocol (MCP) Server** is completely free on the core CRM platform. By leveraging this open standard now, you future-proof your architecture and protect your organization against scenarios where vendors start aggressively charging for token quotas or proprietary API compute pricing models.
+4. **Native Lightning Web Components:** We include a custom LWC to prove that you can run chats and seamlessly connect custom LLMs directly within the Salesforce platform interface, entirely on your own terms.
+
 Salesforce is a bloated, overpriced mess, and companies like OpenAI want to charge you monthly rent just to read your own damn data. Screw that. 
 
 This repository is how you hijack Salesforce's new MCP beta feature and run an AI completely locally on your beat-up laptop for absolutely zero dollars. No cloud subscriptions, no corporate surveillance, just DIY tools taking back control of your own database. We're using Ollama to run the models and LibreChat for the web interface.
