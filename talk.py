@@ -28,7 +28,7 @@ if os.path.exists(guide_path):
         print(f"Warning: Failed to load pronunciations.json: {err}")
 
 # Use a cross-platform temp path instead of hardcoded /tmp
-audio_path = os.path.join(tempfile.gettempdir(), "talk.mp3")
+import uuid; audio_path = os.path.join(tempfile.gettempdir(), f"talk_{uuid.uuid4().hex[:8]}.mp3")
 
 try:
     tts = gTTS(text=text, lang='en', slow=False)
