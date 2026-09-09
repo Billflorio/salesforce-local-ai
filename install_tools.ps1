@@ -1,0 +1,1 @@
+winget install --id Git.Git -e --source winget --accept-package-agreements --accept-source-agreements; winget install --id Salesforce.SalesforceCLI -e --source winget --accept-package-agreements --accept-source-agreements; Write-Host 'Finished installing tools. You can close this window.'; Start-Sleep -Seconds 10
