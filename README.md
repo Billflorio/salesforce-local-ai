@@ -9,7 +9,7 @@
 > - By running the scripts or deploying the configurations contained in this repository, **you take full responsibility** for any consequences, including potential data loss or security breaches.
 
 ## What is this?
-## ?? Strategic Goals / Why We Built This
+## Strategic Goals / Why We Built This
 
 This project isn't just a technical demo—it's a blueprint for taking back control of your organization's AI strategy:
 
