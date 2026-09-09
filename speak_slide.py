@@ -108,7 +108,7 @@ def speak_text(text):
     piper_bin, model_path = find_piper()
     if piper_bin and model_path:
         print(f"[PIPER TTS] Using Piper Neural Voice: {os.path.basename(model_path)}")
-        wav_path = os.path.join(tempfile.gettempdir(), "slide_speech.wav")
+        import uuid; wav_path = os.path.join(tempfile.gettempdir(), f"slide_{uuid.uuid4().hex[:8]}.wav")
         piper_proc = subprocess.Popen(
             [piper_bin, "--model", model_path, "--output_file", wav_path],
             stdin=subprocess.PIPE
