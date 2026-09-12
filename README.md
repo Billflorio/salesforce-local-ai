@@ -1,7 +1,7 @@
 # Zero Cost AI Solutions: Salesforce MCP Integration
 
 ![Presentation QR Code](qr-code.jpg)
-**ðŸš¨ DISCLAIMER & WARNING ðŸš¨**
+**Ã°Å¸Å¡Â¨ DISCLAIMER & WARNING Ã°Å¸Å¡Â¨**
 > This repository and its accompanying scripts are provided strictly for **educational and demonstration purposes**. 
 > - **DO NOT run these scripts against a Production Salesforce environment.** You should only use a Salesforce Developer Edition Org or a Sandbox.
 > - This project is a proof-of-concept to demonstrate how to bridge a local LLM with Salesforce using the Model Context Protocol (MCP).
@@ -11,7 +11,7 @@
 ## What is this?
 ## Strategic Goals / Why We Built This
 
-This project isn't just a technical demo—it's a blueprint for taking back control of your organization's AI strategy:
+This project isn't just a technical demoâ€”it's a blueprint for taking back control of your organization's AI strategy:
 
 1. **Avoid Vendor Lock-In:** You do not need to rely on a proprietary, Salesforce-branded Agentic Builder or get trapped in expensive, walled-garden AI ecosystems. Desktop AI builders like Antigravity give you the exact same power, on your machine, with full control over the environment.
 2. **Eliminate Per-Seat Licensing:** By deploying an open-source, enterprise-ready central command like **LibreChat**, your organization can manage what models are used for what needs without paying a mandatory monthly subscription for every single employee. You only pay for the raw compute you actually use.
@@ -130,20 +130,24 @@ You can now use this Agent to chat directly with your Salesforce data securely!
 If you want to build a fully capable, enterprise-grade AI Copilot using **100% native Salesforce components** (LWC + Apex) connected to Google's Gemini API, check out this module.
 We detail how it was created using Antigravity (mixing Claude and Gemini), what it does, its current limitations, and the massive overall value of connecting this custom Salesforce solution to your organization's existing AI infrastructure versus purchasing Agentforce.
 
-## ðŸ“š Additional Resources & Further Reading
+## 📚 Additional Resources & Further Reading
 
-If you want to take this architecture to the next level or scale it for your organization, check out these official resources:
+If you want to take this architecture to the next level — fine-tune your own models, automate code reviews, or benchmark local AI against Salesforce scratch orgs — check out our comprehensive resource guide:
 
-### ðŸŽ¥ [Video Resources & YouTube Tutorials](./RESOURCES.md)
-If you prefer visual learning, check out our **[curated list of recent YouTube tutorials](./RESOURCES.md)** covering Docker basics, LibreChat setup, Ollama, and Salesforce MCP.
+### 🏴‍☠️ [**The Full Resource Guide →**](./RESOURCES.md)
 
-### Salesforce & Developer Tools
-- **[Salesforce Extensions for VS Code](https://developer.salesforce.com/tools/vscode):** The official guide on how to integrate the Salesforce CLI with Visual Studio Code. This is the industry standard for writing Apex, LWC, and deploying metadata.
-- **[Salesforce Hosted MCP Servers (Beta)](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/overview):** The official developer documentation for the Agentforce MCP endpoints used in this project.
-- **[Salesforce External Client Apps](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&type=5):** Deep dive into the modern OAuth standard that replaces traditional Connected Apps.
+Everything a Salesforce pro needs to go deeper into local AI, with every link verified against live repos:
 
-### Enterprise AI & LibreChat
-- **[LibreChat Enterprise Deployment](https://www.librechat.ai/docs/remote):** Guide on deploying LibreChat to remote servers, enforcing strict organizational rules, managing endpoints, configuring custom SSO (Single Sign-On), and disabling public registration for enterprise scenarios.
-- **[Model Context Protocol (MCP)](https://modelcontextprotocol.io/):** The official documentation for the open-source protocol that makes it possible for AI models to securely read your Salesforce data.
-- **[Ollama Enterprise Guide](https://github.com/ollama/ollama):** Documentation on how to run Ollama on dedicated GPU servers, rather than local laptops, to serve multiple enterprise users simultaneously.
-- **[Sample LibreChat Agent Instructions](https://github.com/Billflorio/salesforce-local-ai/blob/main/3-librechat-config%2FAlForFree_instructions.md):** Agent that accepts a csv file and produces a prepped results file for multi object import.
+- **🤖 [Local AI Models](./RESOURCES.md#-local-ai-models-for-salesforce-development)** — Which models to run, their sizes, and the exact Ollama commands to install them.
+- **🧬 [LoRA Fine-Tuning](./RESOURCES.md#-lora-fine-tuning-train-your-own-salesforce-ai)** — Train a model on YOUR org's Apex code using free tools like Unsloth and Salesforce's CodeTF.
+- **🔒 [SOQL Grammar Constraints](./RESOURCES.md#-grammar-constraints-force-ai-to-write-valid-soql)** — Force AI output to only produce valid SOQL (no more `SELECT *` or `JOIN` hallucinations).
+- **🧰 [DevOps Toolboxes](./RESOURCES.md#-salesforce-devops-toolboxes)** — One-click Salesforce DevOps with sfdx-hardis and the open-source SF CLI.
+- **🔬 [Salesforce AI Research](./RESOURCES.md#-salesforce-ai-research-open-source-from-salesforce-labs)** — Free, open-weight models from Salesforce's own labs (xLAM, CodeT5, AgentLite).
+- **⚙️ [GitHub Actions Pipelines](./RESOURCES.md#-github-actions-automated-ai-pipelines)** — Run AI code reviews in the cloud for free without installing anything locally.
+- **🎥 [Video Tutorials](./RESOURCES.md#-video-resources--youtube-tutorials)** — Curated YouTube tutorials for Docker, Ollama, LibreChat, and MCP.
+
+### Quick Links: Salesforce Developer Essentials
+- **[Salesforce Extensions for VS Code](https://developer.salesforce.com/tools/vscode)** | **[MCP Servers (Beta)](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/overview)** | **[External Client Apps](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&type=5)**
+
+### Quick Links: Enterprise AI & LibreChat
+- **[LibreChat Enterprise](https://www.librechat.ai/docs/remote)** | **[MCP Protocol](https://modelcontextprotocol.io/)** | **[Ollama](https://github.com/ollama/ollama)** | **[Sample Agent Instructions](https://github.com/Billflorio/salesforce-local-ai/blob/main/3-librechat-config%2FAlForFree_instructions.md)**
