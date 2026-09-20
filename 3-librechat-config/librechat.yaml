@@ -1,5 +1,5 @@
-version: 1.0.5
-
+version: 1.1.5
+cache: true
 endpoints:
   google:
     models:
@@ -12,14 +12,14 @@ endpoints:
     titleModel: "gemini-2.0-flash"
 
   custom:
-    - name: "Local Ollama"
+    - name: "Ollama"
       apiKey: "ollama"
-      baseURL: "http://ollama:11434/v1"
+      baseURL: "http://librechat-ollama:11434/v1"
       models:
-        default: [ "qwen2.5:1.5b", "llama3.1:8b" ]
+        default: ["llama3.1"]
         fetch: true
       titleConvo: true
-      titleModel: "qwen2.5:1.5b"
+      titleModel: "current_model"
       summarize: false
       summarizeModel: "qwen2.5:1.5b"
 

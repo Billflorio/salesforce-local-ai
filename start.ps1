@@ -25,8 +25,8 @@ try {
     Write-Host "The Salesforce CLI is required to generate the OAuth tokens for LibreChat."
     $installSf = Read-Host "Would you like me to install the Salesforce CLI for you now using Winget? (Y/N)"
     if ($installSf -match "^[Yy]") {
-        Write-Host "Downloading and installing Salesforce CLI... This may take a moment." -ForegroundColor Cyan
-        winget install Salesforce.CLI --silent --accept-package-agreements --accept-source-agreements
+        Write-Host "Downloading and installing Salesforce CLI... A User Account Control (UAC) prompt will appear." -ForegroundColor Cyan
+        Start-Process -FilePath "winget" -ArgumentList "install Salesforce.CLI --silent --accept-package-agreements --accept-source-agreements" -Verb RunAs -Wait
         Write-Host "Installation complete! IMPORTANT: You must restart your terminal for the 'sf' command to be recognized." -ForegroundColor Yellow
         Write-Host "After restarting your terminal, run this script again." -ForegroundColor Yellow
     } else {
@@ -49,8 +49,8 @@ try {
     Write-Host "Docker is required to run the local AI environment."
     $installDocker = Read-Host "Would you like me to attempt to install Docker Desktop for you now using Winget? (Y/N)"
     if ($installDocker -match "^[Yy]") {
-        Write-Host "Downloading and installing Docker Desktop... This may take a few minutes." -ForegroundColor Cyan
-        winget install Docker.DockerDesktop --silent --accept-package-agreements --accept-source-agreements
+        Write-Host "Downloading and installing Docker Desktop... A User Account Control (UAC) prompt will appear." -ForegroundColor Cyan
+        Start-Process -FilePath "winget" -ArgumentList "install Docker.DockerDesktop --silent --accept-package-agreements --accept-source-agreements" -Verb RunAs -Wait
         Write-Host "Installation complete! IMPORTANT: You must now restart your computer for Docker to function properly." -ForegroundColor Yellow
         Write-Host "After restarting, open Docker Desktop, accept the terms, let it start, and then run this script again." -ForegroundColor Yellow
     } else {
@@ -66,12 +66,16 @@ if (-Not (Test-Path $envFile)) {
     Write-Host "[OK] Created LibreChat .env file." -ForegroundColor Green
 }
 
-# 4. Start Docker Compose
+# 4. Start Docker Compose (using modern V2 plugin syntax)
 Write-Host ""
 Write-Host "Starting the AI Environment (LibreChat, MongoDB, Meilisearch, Ollama)..."
 Write-Host "This may take a few minutes the first time as it downloads the AI model."
-cd .\3-librechat-config
-docker-compose up -d
+Push-Location .\3-librechat-config
+try {
+    docker compose up -d
+} finally {
+    Pop-Location
+}
 
 Write-Host ""
 Write-Host "======================================================" -ForegroundColor Cyan

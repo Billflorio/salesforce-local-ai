@@ -10,8 +10,8 @@ Write-Host "`n[1/3] Checking for Salesforce CLI (sf)..." -ForegroundColor Yellow
 if (Get-Command sf -ErrorAction SilentlyContinue) {
     Write-Host "Success: Salesforce CLI is already installed" -ForegroundColor Green
 } else {
-    Write-Host "Salesforce CLI not found. Installing via winget..." -ForegroundColor Magenta
-    winget install Salesforce.CLI --accept-source-agreements --accept-package-agreements
+    Write-Host "Salesforce CLI not found. Installing via winget... A UAC prompt will appear." -ForegroundColor Magenta
+    Start-Process -FilePath "winget" -ArgumentList "install Salesforce.CLI --accept-source-agreements --accept-package-agreements" -Verb RunAs -Wait
 }
 
 # 2. Check for Google Antigravity
@@ -20,8 +20,8 @@ $agyPath = Join-Path $env:LOCALAPPDATA "Programs\antigravity\Antigravity.exe"
 if (Test-Path $agyPath) {
     Write-Host "Success: Google Antigravity is already installed." -ForegroundColor Green
 } else {
-    Write-Host "Google Antigravity not found. Installing via winget..." -ForegroundColor Magenta
-    winget install Google.Antigravity --accept-source-agreements --accept-package-agreements
+    Write-Host "Google Antigravity not found. Installing via winget... A UAC prompt will appear." -ForegroundColor Magenta
+    Start-Process -FilePath "winget" -ArgumentList "install Google.Antigravity --accept-source-agreements --accept-package-agreements" -Verb RunAs -Wait
 }
 
 # 3. Optional Local AI
@@ -44,7 +44,8 @@ if ($choice -match "^[Yy]") {
 
     if (-not $skipOllama) {
         if (-not (Get-Command ollama -ErrorAction SilentlyContinue)) {
-            winget install Ollama.Ollama --accept-source-agreements --accept-package-agreements
+            Write-Host "Installing Ollama via winget... A UAC prompt will appear." -ForegroundColor Magenta
+            Start-Process -FilePath "winget" -ArgumentList "install Ollama.Ollama --accept-source-agreements --accept-package-agreements" -Verb RunAs -Wait
             $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
         }
         Start-Process "ollama" -ArgumentList "serve" -WindowStyle Hidden -ErrorAction SilentlyContinue
@@ -56,16 +57,37 @@ if ($choice -match "^[Yy]") {
     $configDir = Join-Path $env:USERPROFILE ".gemini\config"
     if (!(Test-Path -Path $configDir)) { New-Item -ItemType Directory -Path $configDir | Out-Null }
     
-    $configJson = @{
-        mcpServers = @{
-            "ollama-bridge" = @{
-                command = "npx"
-                args = @("-y", "ollama-mcp")
-            }
+    # SAFE MERGE: Read existing config and merge instead of overwriting
+    $configPath = Join-Path $configDir "mcp_config.json"
+    $existingConfig = @{}
+    if (Test-Path $configPath) {
+        try {
+            $existingConfig = Get-Content $configPath -Raw | ConvertFrom-Json -AsHashtable
+            Write-Host "Found existing MCP config. Merging (not overwriting)..." -ForegroundColor Cyan
+        } catch {
+            Write-Host "Warning: Could not parse existing mcp_config.json. Creating backup..." -ForegroundColor Yellow
+            Copy-Item $configPath "$configPath.backup.$(Get-Date -Format 'yyyyMMddHHmmss')"
+            $existingConfig = @{}
         }
-    } | ConvertTo-Json -Depth 5
-    Set-Content -Path (Join-Path $configDir "mcp_config.json") -Value $configJson
-    Write-Host "Success: Ollama Bridge configured globally!" -ForegroundColor Green
+    }
+
+    # Ensure the mcpServers key exists
+    if (-not $existingConfig.ContainsKey("mcpServers")) {
+        $existingConfig["mcpServers"] = @{}
+    }
+
+    # Add the ollama-bridge entry (only if not already present)
+    if (-not $existingConfig["mcpServers"].ContainsKey("ollama-bridge")) {
+        $existingConfig["mcpServers"]["ollama-bridge"] = @{
+            command = "npx"
+            args = @("-y", "ollama-mcp")
+        }
+        $configJson = $existingConfig | ConvertTo-Json -Depth 5
+        Set-Content -Path $configPath -Value $configJson
+        Write-Host "Success: Ollama Bridge added to MCP config!" -ForegroundColor Green
+    } else {
+        Write-Host "Ollama Bridge already configured. Skipping." -ForegroundColor Green
+    }
 } else {
     Write-Host "Skipping local AI installation. Antigravity will use the blazing-fast cloud model." -ForegroundColor Green
 }

@@ -1,7 +1,7 @@
 # Zero Cost AI Solutions: Salesforce MCP Integration
 
 ![Presentation QR Code](qr-code.jpg)
-**🚨 DISCLAIMER & WARNING 🚨**
+**Ã°Å¸Å¡Â¨ DISCLAIMER & WARNING Ã°Å¸Å¡Â¨**
 > This repository and its accompanying scripts are provided strictly for **educational and demonstration purposes**. 
 > - **DO NOT run these scripts against a Production Salesforce environment.** You should only use a Salesforce Developer Edition Org or a Sandbox.
 > - This project is a proof-of-concept to demonstrate how to bridge a local LLM with Salesforce using the Model Context Protocol (MCP).
@@ -9,9 +9,14 @@
 > - By running the scripts or deploying the configurations contained in this repository, **you take full responsibility** for any consequences, including potential data loss or security breaches.
 
 ## What is this?
-Salesforce is a bloated, overpriced mess, and companies like OpenAI want to charge you monthly rent just to read your own damn data. Screw that. 
+## Strategic Goals / Why We Built This
 
-This repository is how you hijack Salesforce's new MCP beta feature and run an AI completely locally on your beat-up laptop for absolutely zero dollars. No cloud subscriptions, no corporate surveillance, just DIY tools taking back control of your own database. We're using Ollama to run the models and LibreChat for the web interface.
+This project isn't just a technical demoâ€”it's a blueprint for taking back control of your organization's AI strategy:
+
+1. **Avoid Vendor Lock-In:** You do not need to rely on a proprietary, Salesforce-branded Agentic Builder or get trapped in expensive, walled-garden AI ecosystems. Desktop AI builders like Antigravity give you the exact same power, on your machine, with full control over the environment.
+2. **Eliminate Per-Seat Licensing:** By deploying an open-source, enterprise-ready central command like **LibreChat**, your organization can manage what models are used for what needs without paying a mandatory monthly subscription for every single employee. You only pay for the raw compute you actually use.
+3. **Free CRM Connections:** The Salesforce **Model Context Protocol (MCP) Server** is API (not token or consumption) on core CRM platform. By leveraging this open standard now, you future-proof your architecture and protect your organization against scenarios where vendors start aggressively charging for token quotas or proprietary API compute pricing models.
+4. **Native Lightning Web Components:** We include a custom LWC to prove that you can run chats and seamlessly connect custom LLMs directly within the Salesforce platform interface, entirely on your own terms.
 
 ### Mac & Linux Support
 This entire stack is natively cross-platform because we stuffed it all into Docker containers.
@@ -20,19 +25,30 @@ This entire stack is natively cross-platform because we stuffed it all into Dock
 
 ---
 
-## 💡 Pro Tip for Beginners: Install Antigravity First!
+Pro Tip: Install Antigravity First! Or use the desktop application you're comfortable with VSCode, Cursor, Claude Code etc.
 If you are anxious about following all the command-line instructions, installing Docker, or configuring your environment, **start by installing Antigravity (Step 2) first.** 
 
 Antigravity is an AI agent that lives on your computer with full terminal access. Once installed, it acts as a real-time IT assistant. You can literally ask it to *"help me install Docker,"* *"read these error logs,"* or *"fix my Linux user permissions"* and it will do the heavy lifting for you while you follow the rest of this guide!
 
-## 🗣️ Pro Tip: High-Quality Neural Voice for Presentations
+Pro Tip: High-Quality Neural Voice for Presentations
 If you want the AI to speak its presentation notes out loud using a natural, human-sounding voice (instead of the robotic default), we recommend using **Piper TTS**. It runs completely offline and sounds incredible.
 
-👉 **[See PIPER_SETUP.md](PIPER_SETUP.md) for the 2-minute installation guide.**
+**[See PIPER_SETUP.md](PIPER_SETUP.md) for the 2-minute installation guide.**
+
+ Presentation Deck & Audio Rehearsal
+Testing or presenting this talk? The official slide deck and automated speaker rehearsal script are ready to go:
+- **Presentation Deck:** [`Final_AIOnDimesDeck.pptx`](Final_AIOnDimesDeck.pptx)
+- **Slide Speaker Script:** [`speak_slide.py`](speak_slide.py)
+
+To test the presentation and have your machine read the speaker notes out loud for any slide:
+```bash
+python speak_slide.py <slide_number>
+```
+*(e.g., `python speak_slide.py 1` reads Slide 1. Runs seamlessly on Windows via SAPI, Linux via Piper / espeak, and macOS via `say`.)*
 
 ---
 
-## 📚 Repository Guide
+## Repository Guide
 
 This repository is broken down into modules to help you understand and deploy the architecture step-by-step. Please review the documentation in each folder:
 
@@ -116,18 +132,22 @@ We detail how it was created using Antigravity (mixing Claude and Gemini), what 
 
 ## 📚 Additional Resources & Further Reading
 
-If you want to take this architecture to the next level or scale it for your organization, check out these official resources:
+If you want to take this architecture to the next level — fine-tune your own models, automate code reviews, or benchmark local AI against Salesforce scratch orgs — check out our comprehensive resource guide:
 
-### 🎥 [Video Resources & YouTube Tutorials](./RESOURCES.md)
-If you prefer visual learning, check out our **[curated list of recent YouTube tutorials](./RESOURCES.md)** covering Docker basics, LibreChat setup, Ollama, and Salesforce MCP.
+### 🏴‍☠️ [**The Full Resource Guide →**](./RESOURCES.md)
 
-### Salesforce & Developer Tools
-- **[Salesforce Extensions for VS Code](https://developer.salesforce.com/tools/vscode):** The official guide on how to integrate the Salesforce CLI with Visual Studio Code. This is the industry standard for writing Apex, LWC, and deploying metadata.
-- **[Salesforce Hosted MCP Servers (Beta)](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/overview):** The official developer documentation for the Agentforce MCP endpoints used in this project.
-- **[Salesforce External Client Apps](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&type=5):** Deep dive into the modern OAuth standard that replaces traditional Connected Apps.
+Everything a Salesforce pro needs to go deeper into local AI, with every link verified against live repos:
 
-### Enterprise AI & LibreChat
-- **[LibreChat Enterprise Deployment](https://www.librechat.ai/docs/remote):** Guide on deploying LibreChat to remote servers, enforcing strict organizational rules, managing endpoints, configuring custom SSO (Single Sign-On), and disabling public registration for enterprise scenarios.
-- **[Model Context Protocol (MCP)](https://modelcontextprotocol.io/):** The official documentation for the open-source protocol that makes it possible for AI models to securely read your Salesforce data.
-- **[Ollama Enterprise Guide](https://github.com/ollama/ollama):** Documentation on how to run Ollama on dedicated GPU servers, rather than local laptops, to serve multiple enterprise users simultaneously.
-- **[Sample LibreChat Agent Instructions](https://github.com/Billflorio/salesforce-local-ai/blob/main/3-librechat-config%2FAlForFree_instructions.md):** Agent that accepts a csv file and produces a prepped results file for multi object import.
+- **🤖 [Local AI Models](./RESOURCES.md#-local-ai-models-for-salesforce-development)** — Which models to run, their sizes, and the exact Ollama commands to install them.
+- **🧬 [LoRA Fine-Tuning](./RESOURCES.md#-lora-fine-tuning-train-your-own-salesforce-ai)** — Train a model on YOUR org's Apex code using free tools like Unsloth and Salesforce's CodeTF.
+- **🔒 [SOQL Grammar Constraints](./RESOURCES.md#-grammar-constraints-force-ai-to-write-valid-soql)** — Force AI output to only produce valid SOQL (no more `SELECT *` or `JOIN` hallucinations).
+- **🧰 [DevOps Toolboxes](./RESOURCES.md#-salesforce-devops-toolboxes)** — One-click Salesforce DevOps with sfdx-hardis and the open-source SF CLI.
+- **🔬 [Salesforce AI Research](./RESOURCES.md#-salesforce-ai-research-open-source-from-salesforce-labs)** — Free, open-weight models from Salesforce's own labs (xLAM, CodeT5, AgentLite).
+- **⚙️ [GitHub Actions Pipelines](./RESOURCES.md#-github-actions-automated-ai-pipelines)** — Run AI code reviews in the cloud for free without installing anything locally.
+- **🎥 [Video Tutorials](./RESOURCES.md#-video-resources--youtube-tutorials)** — Curated YouTube tutorials for Docker, Ollama, LibreChat, and MCP.
+
+### Quick Links: Salesforce Developer Essentials
+- **[Salesforce Extensions for VS Code](https://developer.salesforce.com/tools/vscode)** | **[MCP Servers (Beta)](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/overview)** | **[External Client Apps](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&type=5)**
+
+### Quick Links: Enterprise AI & LibreChat
+- **[LibreChat Enterprise](https://www.librechat.ai/docs/remote)** | **[MCP Protocol](https://modelcontextprotocol.io/)** | **[Ollama](https://github.com/ollama/ollama)** | **[Sample Agent Instructions](https://github.com/Billflorio/salesforce-local-ai/blob/main/3-librechat-config%2FAlForFree_instructions.md)**
