@@ -1,2 +1,5 @@
 3-librechat-config/.env
 .DS_Store
+piper/
+pptx_extracted/
+voices.txt

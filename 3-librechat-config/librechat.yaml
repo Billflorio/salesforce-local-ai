@@ -4,13 +4,12 @@ endpoints:
   google:
     models:
       default:
-        - gemini-3.8-flash
+        - gemini-2.0-flash
         - gemini-2.5-flash
         - gemini-2.5-pro
-        - gemini-2.0-flash
-      fetch: false
+      fetch: true
     titleConvo: true
-    titleModel: "gemini-3.8-flash"
+    titleModel: "gemini-2.0-flash"
 
   custom:
     - name: "Local Ollama"
@@ -23,3 +22,10 @@ endpoints:
       titleModel: "qwen2.5:1.5b"
       summarize: false
       summarizeModel: "qwen2.5:1.5b"
+
+speech:
+  stt:
+    openai:
+      url: "http://whisper:8000/v1/audio/transcriptions"
+      apiKey: "dummy"
+      model: "Systran/faster-whisper-tiny.en"

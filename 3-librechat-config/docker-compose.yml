@@ -41,6 +41,14 @@ services:
     # Pull both models: qwen2.5:1.5b (CPU/low-RAM) and llama3.1:8b (GPU/high-RAM)
     entrypoint: [ "/bin/sh", "-c", "ollama serve & sleep 5 && ollama pull qwen2.5:1.5b && ollama pull llama3.1:8b && wait" ]
 
+  whisper:
+    image: fedirz/faster-whisper-server:latest-cpu
+    container_name: librechat-whisper
+    ports:
+      - 8000:8000
+    environment:
+      - WHISPER_MODEL=tiny.en
+
 volumes:
   librechat_mongo_data:
   librechat_meili_data:
