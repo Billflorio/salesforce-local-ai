@@ -31,23 +31,22 @@ if os.path.exists(guide_path):
 audio_path = os.path.join(tempfile.gettempdir(), "talk.mp3")
 
 try:
+    # Prepend a short pause so audio players don't clip the first syllable on startup
+    text = ", " + text
     tts = gTTS(text=text, lang='en', slow=False)
     tts.save(audio_path)
 
     system = platform.system()
     if system == "Windows":
-        # Use PowerShell's built-in media player on Windows
-        ps_cmd = f'(New-Object Media.SoundPlayer).SoundLocation = ""; Add-Type -AssemblyName presentationCore; $mp = New-Object System.Windows.Media.MediaPlayer; $mp.Open([uri]"{audio_path}"); Start-Sleep -Milliseconds 500; $mp.Play(); Start-Sleep -Seconds ([math]::Ceiling($mp.NaturalDuration.TimeSpan.TotalSeconds + 1))'
-        # Simpler fallback: use the default media handler
         os.startfile(audio_path)
         import time
         time.sleep(5)  # Give time for audio to play
     elif system == "Darwin":
         subprocess.run(["afplay", audio_path])
     else:
-        # Linux: try ffplay, then mpv, then paplay
+        # Linux: try ffplay (with 300ms silence pad), then mpv, then cvlc
         players = [
-            ["ffplay", "-nodisp", "-autoexit", "-loglevel", "quiet", audio_path],
+            ["ffplay", "-nodisp", "-autoexit", "-loglevel", "quiet", "-af", "adelay=300:all=1", audio_path],
             ["mpv", "--no-video", audio_path],
             ["cvlc", "--play-and-exit", audio_path],
         ]
