@@ -6,6 +6,28 @@ These prompts are heavily optimized to prevent local LLMs from rambling, speedin
 
 ---
 
+## ⚠️ Setup Notes (Read This First on Any New Machine)
+
+### Google / Gemini Models
+- `gemini-2.0-flash` and `gemini-2.5-flash` are **DEPRECATED** — they return a 404 error.
+- Use **`gemini-3.6-flash`** as the default model in `librechat.yaml`.
+- The correct `librechat.yaml` Google endpoint block is:
+  ```yaml
+  google:
+    apiKey: "${GEMINI_API_KEY}"
+    models:
+      default:
+        - gemini-3.6-flash
+        - gemini-2.5-pro
+      fetch: false
+    titleConvo: true
+    titleModel: "gemini-3.6-flash"
+  ```
+- After editing `librechat.yaml` **OR** `.env`, always run `docker compose up -d librechat` (NOT just `restart`) — plain restart does NOT re-read the `.env` file.
+- Both `GEMINI_API_KEY` and `GOOGLE_KEY` in `.env` must contain your real API key when using `apiKey: "${GEMINI_API_KEY}"` in `librechat.yaml`.
+
+---
+
 ### 1. General Salesforce SOQL Agent
 **Use Case:** Executing general queries via the `sobject-all` MCP tools.
 **Instructions:**
