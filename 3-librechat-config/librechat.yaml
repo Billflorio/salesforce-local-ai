@@ -27,8 +27,3 @@ endpoints:
       summarizeModel: "qwen2.5:1.5b"
       forcePrompt: false
       modelDisplayLabel: "Local Ollama"
-
-mcpServers:
-  salesforce-object-reads:
-    type: streamable-http
-    url: "https://api.salesforce.com/platform/mcp/v1/sandbox/platform/sobject-reads"
